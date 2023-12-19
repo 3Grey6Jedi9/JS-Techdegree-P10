@@ -5,6 +5,7 @@ const express = require('express');
 const morgan = require('morgan');
 const sequelize = require('./database'); // Import centralized Sequelize instance
 const authenticateUser = require('./auth'); // Importing the authentication middleware
+const cors = require('cors'); // Importing the cors middleware
 
 
 // Importing userRoutes
@@ -55,6 +56,9 @@ const app = express();
 
 // Setting up morgan which gives us http request logging
 app.use(morgan('dev'));
+
+// Enabling CORS for all routes
+app.use(cors());
 
 app.use(express.json()); // Middleware for parsing JSON request bodies
 
@@ -130,7 +134,7 @@ app.use((req, res) => {
 
 
 // setting our port
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 5001);
 
 // start listening on our port
 const server = app.listen(app.get('port'), () => {
