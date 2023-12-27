@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
 import Routes from './Routes';
+import axios from 'axios'; // Import Axios
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -10,12 +11,8 @@ function App() {
     // Function to fetch the list of courses from your API
     async function fetchCourses() {
       try {
-        const response = await fetch('http://localhost:5001/api/courses');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setCourses(data);
+        const response = await axios.get('http://localhost:5001/api/courses');
+        setCourses(response.data); // Use response.data to set courses
       } catch (error) {
         console.error('Error fetching courses:', error);
       }
