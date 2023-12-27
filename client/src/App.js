@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
+import Routes from './Routes'; // Import the Routes component
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -42,6 +43,8 @@ function App() {
           Learn React
         </a>
       </header>
+      {/* Include the Routes component to enable routing */}
+      <Routes />
     </div>
   );
 }
