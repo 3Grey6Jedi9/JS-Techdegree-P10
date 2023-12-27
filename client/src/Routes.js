@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-// Importing the  route components
 import Courses from './components/Courses';
 import CreateCourse from './components/CreateCourse';
 import UpdateCourse from './components/UpdateCourse';
@@ -10,8 +9,7 @@ import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
 
-
-function App() {
+function Routes() {
   return (
     <Router>
       <Switch>
@@ -27,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default Routes;
