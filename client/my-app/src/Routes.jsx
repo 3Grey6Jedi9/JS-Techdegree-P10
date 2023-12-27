@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import the necessary components
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Courses from './components/Courses';
 import CreateCourse from './components/CreateCourse';
@@ -9,13 +9,13 @@ import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
 
-function AppRoutes() {
+function AppRoutes({ courses }) {
   return (
     <Router>
       <Routes>
         <Route
           path="/"
-          element={<Courses />} // Use 'element' instead of 'component'
+          element={<Courses courses={courses} />} // Pass the 'courses' prop
         />
         <Route path="/courses/create" element={<CreateCourse />} />
         <Route path="/courses/:id/update" element={<UpdateCourse />} />

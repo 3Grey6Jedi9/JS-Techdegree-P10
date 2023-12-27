@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import logo from './assets/logo.svg';
 import './styles/App.css';
-import Routes from './Routes';
-import axios from 'axios'; // Import Axios
+import AppRoutes from './Routes';
+import axios from 'axios';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -26,7 +26,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>List of Courses:</p>
-        <Routes courses={courses} /> {/* Pass the courses data as a prop */}
+        <AppRoutes courses={courses} /> {/* Pass the courses data as a prop */}
       </header>
     </div>
   );
