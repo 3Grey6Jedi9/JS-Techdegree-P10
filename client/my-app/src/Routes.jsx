@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import the necessary components
 
 import Courses from './components/Courses';
 import CreateCourse from './components/CreateCourse';
@@ -9,24 +9,23 @@ import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
 
-function Routes() {
+function AppRoutes() {
   return (
     <Router>
-      <Switch>
+      <Routes>
         <Route
-          exact
           path="/"
-          render={(props) => <Courses {...props} courses={courses} />} // Pass the courses prop
+          element={<Courses />} // Use 'element' instead of 'component'
         />
-        <Route path="/courses/create" component={CreateCourse} />
-        <Route path="/courses/:id/update" component={UpdateCourse} />
-        <Route path="/courses/:id" component={CourseDetail} />
-        <Route path="/signin" component={UserSignIn} />
-        <Route path="/signup" component={UserSignUp} />
-        <Route path="/signout" component={UserSignOut} />
-      </Switch>
+        <Route path="/courses/create" element={<CreateCourse />} />
+        <Route path="/courses/:id/update" element={<UpdateCourse />} />
+        <Route path="/courses/:id" element={<CourseDetail />} />
+        <Route path="/signin" element={<UserSignIn />} />
+        <Route path="/signup" element={<UserSignUp />} />
+        <Route path="/signout" element={<UserSignOut />} />
+      </Routes>
     </Router>
   );
 }
 
-export default Routes;
+export default AppRoutes;
