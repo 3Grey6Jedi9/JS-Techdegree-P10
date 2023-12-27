@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
-import Routes from './Routes'; // Import the Routes component
+import Routes from './Routes';
 
 function App() {
   const [courses, setCourses] = useState([]);
@@ -10,7 +10,7 @@ function App() {
     // Function to fetch the list of courses from your API
     async function fetchCourses() {
       try {
-        const response = await fetch('http://localhost:5001/api/courses'); // Update the URL as needed
+        const response = await fetch('http://localhost:5001/api/courses');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -22,29 +22,15 @@ function App() {
     }
 
     fetchCourses();
-  }, []); // Empty dependency array to run once when the component mounts
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>List of Courses:</p>
-        <ul>
-          {courses.map((course) => (
-            <li key={course.id}>{course.title}</li>
-          ))}
-        </ul>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Routes courses={courses} /> {/* Pass the courses data as a prop */}
       </header>
-      {/* Include the Routes component to enable routing */}
-      <Routes />
     </div>
   );
 }
