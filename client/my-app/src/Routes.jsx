@@ -9,13 +9,15 @@ import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
 
-
-
 function Routes() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Courses} />
+        <Route
+          exact
+          path="/"
+          render={(props) => <Courses {...props} courses={courses} />} // Pass the courses prop
+        />
         <Route path="/courses/create" component={CreateCourse} />
         <Route path="/courses/:id/update" component={UpdateCourse} />
         <Route path="/courses/:id" component={CourseDetail} />
