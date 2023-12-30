@@ -11,7 +11,7 @@ function Courses({ courses }) { // Receive courses as a prop
           </li>
         ))}
       </ul>
-      <a href="/create-course">Create Course</a>
+      <a href="/courses/create">Create Course</a>
     </div>
   );
 }
