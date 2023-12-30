@@ -25,7 +25,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>List of Courses:</p>
         <AppRoutes courses={courses} /> {/* Pass the courses data as a prop */}
       </header>
     </div>
