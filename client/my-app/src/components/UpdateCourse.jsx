@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function UpdateCourse(props) {
+  const navigate = useNavigate();
   const [course, setCourse] = useState({
     title: '',
     description: '',
@@ -15,12 +18,13 @@ function UpdateCourse(props) {
 
   const fetchCourseDetail = async () => {
     try {
-      const response = await fetch(`http://localhost:5001/api/courses/${props.match.params.id}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      const response = await axios.get(`http://localhost:5001/api/courses/${props.match.params.id}`);
+      if (response.status === 200) {
+        const data = response.data;
+        setCourse(data);
+      } else {
+        console.error(`Network response was not ok. Status: ${response.status}`);
       }
-      const data = await response.json();
-      setCourse(data);
     } catch (error) {
       console.error('Error fetching course details:', error);
     }
@@ -36,15 +40,22 @@ function UpdateCourse(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can implement the course update logic here using your REST API
-    // Example: Make a PUT request to update the course
-    // If successful, you can redirect to the course detail page
-    // If unsuccessful, you can display an error message
+    try {
+      const response = await axios.put(`http://localhost:5001/api/courses/${props.match.params.id}`, course);
+      if (response.status === 204) {
+        // Successful update, navigate to the course detail page
+        navigate(`/courses/${props.match.params.id}`);
+      } else {
+        console.error(`Network response was not ok. Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error updating course:', error);
+    }
   };
 
   const handleCancel = () => {
     // Redirect the user to the course detail page
-    props.history.push(`/courses/${props.match.params.id}`);
+    navigate(`/courses/${props.match.params.id}`);
   };
 
   return (
