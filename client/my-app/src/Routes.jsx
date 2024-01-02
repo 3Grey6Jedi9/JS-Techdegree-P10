@@ -18,7 +18,7 @@ function AppRoutes({ courses }) {
           element={<Courses courses={courses} />}
         />
         <Route path="/courses/create" element={<CreateCourse />} />
-        <Route path="/courses/:id/update" element={<UpdateCourse />} />
+        <Route path="/courses/:id/update" element={<UpdateCourse courses={courses} />} />
         <Route
           path="/courses/:id"
           element={<CourseDetail />} // Pass the 'courses' prop here

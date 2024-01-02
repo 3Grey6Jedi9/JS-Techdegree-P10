@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function UpdateCourse(props) {
+function UpdateCourse({ courses }) {
   const navigate = useNavigate();
-  const [course, setCourse] = useState({
-    title: '',
-    description: '',
-    estimatedTime: '',
-    materialsNeeded: '',
+  const { id } = useParams();
+
+  // Find the selected course in the props.courses array
+  const selectedCourse = courses.find(course => course.id === id);
+
+  // Initialize the state with values from the selected course
+  const [updatedCourse, setUpdatedCourse] = useState({
+    title: selectedCourse?.title || '',
+    description: selectedCourse?.description || '',
+    estimatedTime: selectedCourse?.estimatedTime || '',
+    materialsNeeded: selectedCourse?.materialsNeeded || '',
   });
 
   useEffect(() => {
-    // Fetch the course details when the component mounts
     fetchCourseDetail();
-  }, [props.match.params.id]);
+  }, [id]);
 
   const fetchCourseDetail = async () => {
     try {
-      const response = await axios.get(`http://localhost:5001/api/courses/${props.match.params.id}`);
+      const response = await axios.get(`http://localhost:5001/api/courses/${id}`);
       if (response.status === 200) {
         const data = response.data;
-        setCourse(data);
+        setUpdatedCourse(data);
       } else {
         console.error(`Network response was not ok. Status: ${response.status}`);
       }
@@ -32,8 +37,8 @@ function UpdateCourse(props) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCourse({
-      ...course,
+    setUpdatedCourse({
+      ...updatedCourse,
       [name]: value,
     });
   };
@@ -41,10 +46,10 @@ function UpdateCourse(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:5001/api/courses/${props.match.params.id}`, course);
+      const response = await axios.put(`http://localhost:5001/api/courses/${id}`, updatedCourse);
       if (response.status === 204) {
         // Successful update, navigate to the course detail page
-        navigate(`/courses/${props.match.params.id}`);
+        navigate(`/courses/${id}`);
       } else {
         console.error(`Network response was not ok. Status: ${response.status}`);
       }
@@ -55,7 +60,7 @@ function UpdateCourse(props) {
 
   const handleCancel = () => {
     // Redirect the user to the course detail page
-    navigate(`/courses/${props.match.params.id}`);
+    navigate(`/courses/${id}`);
   };
 
   return (
@@ -68,7 +73,7 @@ function UpdateCourse(props) {
             type="text"
             id="title"
             name="title"
-            value={course.title}
+            value={updatedCourse.title}
             onChange={handleInputChange}
             required
           />
@@ -78,7 +83,7 @@ function UpdateCourse(props) {
           <textarea
             id="description"
             name="description"
-            value={course.description}
+            value={updatedCourse.description}
             onChange={handleInputChange}
             required
           />
@@ -89,7 +94,7 @@ function UpdateCourse(props) {
             type="text"
             id="estimatedTime"
             name="estimatedTime"
-            value={course.estimatedTime}
+            value={updatedCourse.estimatedTime}
             onChange={handleInputChange}
           />
         </div>
@@ -98,7 +103,7 @@ function UpdateCourse(props) {
           <textarea
             id="materialsNeeded"
             name="materialsNeeded"
-            value={course.materialsNeeded}
+            value={updatedCourse.materialsNeeded}
             onChange={handleInputChange}
           />
         </div>
