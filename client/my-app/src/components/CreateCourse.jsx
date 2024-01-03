@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
+
 
 function CreateCourse(props) {
   const [title, setTitle] = useState('');
@@ -19,6 +21,8 @@ function CreateCourse(props) {
     }
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // You can implement the course creation logic here using your REST API
@@ -29,7 +33,7 @@ function CreateCourse(props) {
 
   const handleCancel = () => {
     // Redirect the user to the default route (list of courses)
-    props.history.push('/courses');
+    navigate('/courses');
   };
 
   return (
