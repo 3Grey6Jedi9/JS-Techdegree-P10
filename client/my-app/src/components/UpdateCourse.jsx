@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Courses from './Courses'; // Import the Courses component
 
 function UpdateCourse({ courses }) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // Find the selected course in the props.courses array
-  const selectedCourse = courses.find(course => course.id === id);
-
   // Initialize the state with values from the selected course
   const [updatedCourse, setUpdatedCourse] = useState({
-    title: selectedCourse?.title || '',
-    description: selectedCourse?.description || '',
-    estimatedTime: selectedCourse?.estimatedTime || '',
-    materialsNeeded: selectedCourse?.materialsNeeded || '',
+    title: '',
+    description: '',
+    estimatedTime: '',
+    materialsNeeded: '',
   });
 
   useEffect(() => {

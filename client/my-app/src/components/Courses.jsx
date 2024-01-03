@@ -1,6 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Courses({ courses }) { // Receive courses as a prop
+function Courses() { // No need to receive courses as a prop
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch the list of courses from your API
+    async function fetchCourses() {
+      try {
+        const response = await axios.get('http://localhost:5001/api/courses');
+        setCourses(response.data); // Use response.data to set courses
+      } catch (error) {
+        console.error('Error fetching courses:', error);
+      }
+    }
+
+    fetchCourses();
+  }, []);
+
   return (
     <div>
       <h2>Courses</h2>

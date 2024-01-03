@@ -9,18 +9,19 @@ import CourseDetail from './components/CourseDetail';
 import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
+import courses from "./components/Courses";
 
-function AppRoutes({ courses }) {
+function AppRoutes() {
   return (
     <Router>
       <Header /> {/* Include the Header component here */}
       <Routes>
         <Route
           path="/"
-          element={<Courses courses={courses} />}
+          element={<Courses />}
         />
         <Route path="/courses/create" element={<CreateCourse />} />
-        <Route path="/courses/:id/update" element={<UpdateCourse courses={courses} />} />
+        <Route path="/courses/:id/update" element={<UpdateCourse courses={courses}/>} />
         <Route
           path="/courses/:id"
           element={<CourseDetail />}
