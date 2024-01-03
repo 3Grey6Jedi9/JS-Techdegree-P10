@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
+
 
 function UserSignUp(props) {
   const [firstName, setFirstName] = useState('');
@@ -6,6 +8,8 @@ function UserSignUp(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const navigate = useNavigate(); // Getting the navigate function
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +36,7 @@ function UserSignUp(props) {
 
   const handleCancel = () => {
     // Redirect the user to the default route (Header)
-    props.history.push('/');
+    navigate('/');
   };
 
   return (
