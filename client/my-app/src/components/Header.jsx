@@ -5,7 +5,7 @@ function Header({ authenticatedUser, signOut }) {
   return (
     <div className="header">
       <div className="bounds">
-        <h1 className="header--logo">Courses</h1>
+        <h1 className="header--logo">Courses App</h1>
         <nav>
           {authenticatedUser ? (
             <React.Fragment>

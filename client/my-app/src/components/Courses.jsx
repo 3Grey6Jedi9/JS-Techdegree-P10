@@ -20,7 +20,7 @@ function Courses() { // No need to receive courses as a prop
 
   return (
     <div>
-      <h2>Courses</h2>
+      <h2>List of Courses</h2>
       <ul>
         {courses.map((course) => (
           <li key={course.id}>

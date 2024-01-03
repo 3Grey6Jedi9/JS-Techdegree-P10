@@ -14,10 +14,10 @@ import courses from "./components/Courses";
 function AppRoutes() {
   return (
     <Router>
-      <Header /> {/* Include the Header component here */}
       <Routes>
+          <Route path="/" element={<Header />} />
         <Route
-          path="/"
+          path="/courses"
           element={<Courses />}
         />
         <Route path="/courses/create" element={<CreateCourse />} />
@@ -36,9 +36,3 @@ function AppRoutes() {
 
 export default AppRoutes;
 
-
-// Use '/' path for the Header and /courses for courses that makes more sense 8explain in the Readme file
-
-// And then only if you are abe to sign in you should be able to acces the info
-
-// Fetch the initial data in the Courses component
