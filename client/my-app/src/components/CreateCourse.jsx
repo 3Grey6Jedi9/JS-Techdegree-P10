@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-
-function CreateCourse(props) {
+function CreateCourse() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
@@ -25,10 +25,25 @@ function CreateCourse(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can implement the course creation logic here using your REST API
-    // Example: Make a POST request to create a new course
-    // If successful, you can redirect to the course detail page
-    // If unsuccessful, you can display an error message
+
+    try {
+      const response = await axios.post('http://localhost:5001/api/courses', {
+        title,
+        description,
+        estimatedTime,
+        materialsNeeded,
+      });
+
+      if (response.status === 201) {
+        // Successful course creation, navigate to the course detail page
+        const newCourseId = response.data.id;
+        navigate(`/courses/${newCourseId}`);
+      } else {
+        console.error(`Network response was not ok. Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error creating course:', error);
+    }
   };
 
   const handleCancel = () => {
@@ -82,7 +97,9 @@ function CreateCourse(props) {
         </div>
         <div>
           <button type="submit">Create Course</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>
@@ -90,4 +107,3 @@ function CreateCourse(props) {
 }
 
 export default CreateCourse;
-
