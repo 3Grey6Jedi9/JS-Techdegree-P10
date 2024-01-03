@@ -31,8 +31,8 @@ function UserSignUp(props) {
   };
 
   const handleCancel = () => {
-    // Redirect the user to the default route (list of courses)
-    props.history.push('/courses');
+    // Redirect the user to the default route (Header)
+    props.history.push('/');
   };
 
   return (

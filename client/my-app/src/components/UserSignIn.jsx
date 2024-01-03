@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Import Axios
 
 function UserSignIn(props) {
   const [email, setEmail] = useState('');
@@ -13,17 +14,32 @@ function UserSignIn(props) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can implement the sign-in logic here using your authentication mechanism
-    // Example: Make an API request to authenticate the user
-    // If successful, you can redirect to a protected route
-    // If unsuccessful, you can display an error message
+
+    try {
+      // Make an API request to authenticate the user
+      const response = await axios.post('http://your-api-url/signin', {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        // Successful authentication, you can redirect to a protected route
+        props.history.push('/protected-route');
+      } else {
+        console.error(`Authentication failed. Status: ${response.status}`);
+        // Display an error message or handle the error as needed
+      }
+    } catch (error) {
+      console.error('Error during authentication:', error);
+      // Handle the error, display an error message, etc.
+    }
   };
 
   const handleCancel = () => {
-    // Redirect the user to the default route (list of courses)
-    props.history.push('/courses');
+    // Redirect the user to the default route (Header)
+    props.history.push('/');
   };
 
   return (
@@ -54,7 +70,9 @@ function UserSignIn(props) {
         </div>
         <div>
           <button type="submit">Sign In</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>
