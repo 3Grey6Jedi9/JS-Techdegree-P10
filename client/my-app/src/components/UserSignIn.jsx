@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
+import {useNavigate} from "react-router-dom";
+
 
 function UserSignIn(props) {
   const [email, setEmail] = useState('');
@@ -13,6 +15,8 @@ function UserSignIn(props) {
       setPassword(value);
     }
   };
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +43,7 @@ function UserSignIn(props) {
 
   const handleCancel = () => {
     // Redirect the user to the default route (Header)
-    props.history.push('/');
+    navigate('/');
   };
 
   return (
