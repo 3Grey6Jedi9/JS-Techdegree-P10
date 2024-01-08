@@ -12,7 +12,7 @@ function App() {
         <AuthProvider> {/* Wrap your app with AuthProvider */}
           <AppRoutes />
         </AuthProvider>
-      </header>cl
+      </header>
     </div>
   );
 }

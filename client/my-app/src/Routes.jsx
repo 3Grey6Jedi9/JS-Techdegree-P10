@@ -9,30 +9,64 @@ import CourseDetail from './components/CourseDetail';
 import UserSignIn from './components/UserSignIn';
 import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
+import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
 import courses from "./components/Courses";
+
 
 function AppRoutes() {
   return (
     <Router>
       <Routes>
-          <Route path="/" element={<Header />} />
+        <Route path="/" element={<Header />} />
+
+        {/* Protected Routes */}
         <Route
           path="/courses"
-          element={<Courses />}
+          element={
+            <PrivateRoute>
+              <Courses />
+            </PrivateRoute>
+          }
         />
-        <Route path="/courses/create" element={<CreateCourse />} />
-        <Route path="/courses/:id/update" element={<UpdateCourse courses={courses}/>} />
+        <Route
+          path="/courses/create"
+          element={
+            <PrivateRoute>
+              <CreateCourse />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/courses/:id/update"
+          element={
+            <PrivateRoute>
+              <UpdateCourse courses={courses} />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/courses/:id"
-          element={<CourseDetail />}
+          element={
+            <PrivateRoute>
+              <CourseDetail />
+            </PrivateRoute>
+          }
         />
+        <Route
+          path="/signout"
+          element={
+            <PrivateRoute>
+              <UserSignOut />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Unprotected Routes */}
         <Route path="/signin" element={<UserSignIn />} />
         <Route path="/signup" element={<UserSignUp />} />
-        <Route path="/signout" element={<UserSignOut />} />
       </Routes>
     </Router>
   );
 }
 
 export default AppRoutes;
-
