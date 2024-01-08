@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
-import {useNavigate} from "react-router-dom";
-import {useAuth} from "../AuthContext.jsx";
-
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext.jsx';
 
 function UserSignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {signIn} = useAuth(); // Accessing signIn function from context
+  const { signIn } = useAuth(); // Accessing signIn function from context
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,22 +18,23 @@ function UserSignIn(props) {
     }
   };
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // Make an API request to authenticate the user
-      const response = await axios.post('http://your-api-url/signin', {
-        email,
-        password,
+      const authString = `${email}:${password}`;
+      const base64AuthString = btoa(authString); // Encode credentials to Base64
+      const response = await axios.get('http://localhost:5001/api/users', {
+        headers: {
+          Authorization: `Basic ${base64AuthString}`,
+        },
       });
 
       if (response.status === 200) {
         // Successful authentication, you can redirect to a protected route
         signIn(response.data);
-        navigate('/protected-route')
+        navigate('/courses');
       } else {
         console.error(`Authentication failed. Status: ${response.status}`);
         // Display an error message or handle the error as needed
