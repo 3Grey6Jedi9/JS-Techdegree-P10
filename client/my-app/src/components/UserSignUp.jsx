@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "../AuthContext.jsx";
 
 
 function UserSignUp(props) {
@@ -10,6 +11,8 @@ function UserSignUp(props) {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const navigate = useNavigate(); // Getting the navigate function
+
+  const {signUp} = useAuth(); // Accessing signUp funcion
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

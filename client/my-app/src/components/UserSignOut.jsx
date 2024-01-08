@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {useAuth} from "../AuthContext.jsx";
 
 function UserSignOut({ signOut }) {
   const navigate = useNavigate();

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "../AuthContext.jsx";
 
 
 function UserSignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const {signIn} = useAuth(); // Accessing signIn function from context
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +32,8 @@ function UserSignIn(props) {
 
       if (response.status === 200) {
         // Successful authentication, you can redirect to a protected route
-        props.history.push('/protected-route');
+        signIn(response.data);
+        navigate('/protected-route')
       } else {
         console.error(`Authentication failed. Status: ${response.status}`);
         // Display an error message or handle the error as needed
