@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import Header from './components/Header'; // Import the Header component
 import Courses from './components/Courses';
@@ -21,45 +21,18 @@ function AppRoutes() {
 
         {/* Protected Routes */}
         <Route
-          path="/courses"
+          path="/protected"
           element={
-            <PrivateRoute>
-              <Courses />
-            </PrivateRoute>
+            <PrivateRoute />
           }
-        />
-        <Route
-          path="/courses/create"
-          element={
-            <PrivateRoute>
-              <CreateCourse />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/courses/:id/update"
-          element={
-            <PrivateRoute>
-              <UpdateCourse courses={courses} />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/courses/:id"
-          element={
-            <PrivateRoute>
-              <CourseDetail />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/signout"
-          element={
-            <PrivateRoute>
-              <UserSignOut />
-            </PrivateRoute>
-          }
-        />
+        >
+          {/* Use relative paths for nested routes */}
+          <Route index element={<Courses />} /> {/* Default route */}
+          <Route path="courses/create" element={<CreateCourse />} />
+          <Route path="courses/:id/update" element={<UpdateCourse courses={courses} />} />
+          <Route path="courses/:id" element={<CourseDetail />} />
+          <Route path="signout" element={<UserSignOut />} />
+        </Route>
 
         {/* Unprotected Routes */}
         <Route path="/signin" element={<UserSignIn />} />
@@ -69,4 +42,6 @@ function AppRoutes() {
   );
 }
 
+
 export default AppRoutes;
+
