@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 function Courses() { // No need to receive courses as a prop
   const [courses, setCourses] = useState([]);
@@ -24,11 +25,11 @@ function Courses() { // No need to receive courses as a prop
       <ul>
         {courses.map((course) => (
           <li key={course.id}>
-            <a href={`/courses/${course.id}`}>{course.title}</a>
+            <a href={`${course.id}`}>{course.title}</a>
           </li>
         ))}
       </ul>
-      <a href="/courses/create">Create Course</a>
+      <Link to="create">Create Course</Link>
     </div>
   );
 }

@@ -34,7 +34,7 @@ function UserSignIn(props) {
       if (response.status === 200) {
         // Successful authentication, you can redirect to a protected route
         signIn(response.data);
-        navigate('/protected');
+        navigate('/courses');
       } else {
         console.error(`Authentication failed. Status: ${response.status}`);
         // Display an error message or handle the error as needed

@@ -21,16 +21,16 @@ function AppRoutes() {
 
         {/* Protected Routes */}
         <Route
-          path="/protected"
+          path="/courses"
           element={
             <PrivateRoute />
           }
         >
           {/* Use relative paths for nested routes */}
           <Route index element={<Courses />} /> {/* Default route */}
-          <Route path="courses/create" element={<CreateCourse />} />
-          <Route path="courses/:id/update" element={<UpdateCourse courses={courses} />} />
-          <Route path="courses/:id" element={<CourseDetail />} />
+          <Route path="create" element={<CreateCourse />} />
+          <Route path=":id/update" element={<UpdateCourse courses={courses} />} />
+          <Route path=":id" element={<CourseDetail />} />
           <Route path="signout" element={<UserSignOut />} />
         </Route>
 
