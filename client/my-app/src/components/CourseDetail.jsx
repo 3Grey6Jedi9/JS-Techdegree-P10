@@ -47,7 +47,7 @@ function CourseDetail() {
           <h3>{course.title}</h3>
           <p>{course.description}</p>
           <button onClick={handleDeleteCourse}>Delete Course</button>
-          <Link to={`/courses/${course.id}/update`}>Update Course</Link>
+          <Link to="update">Update Course</Link>
         </div>
       ) : (
         <p>Loading...</p>

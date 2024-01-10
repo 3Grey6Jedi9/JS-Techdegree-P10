@@ -25,7 +25,7 @@ function Courses() { // No need to receive courses as a prop
       <ul>
         {courses.map((course) => (
           <li key={course.id}>
-            <a href={`${course.id}`}>{course.title}</a>
+            <Link to={`/courses/${course.id}`}>{course.title}</Link>
           </li>
         ))}
       </ul>
