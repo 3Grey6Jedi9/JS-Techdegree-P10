@@ -17,18 +17,13 @@ export function AuthProvider({ children }) {
     setUser(userData);
   };
 
-  const signUp = (userData) => {
-    // Implement sign-up logic and set the user state
-    setUser(userData);
-  };
-
   const signOut = () => {
     // Implement sign-out logic and clear the user state
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signOut, signUp }}>
+    <AuthContext.Provider value={{ user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
