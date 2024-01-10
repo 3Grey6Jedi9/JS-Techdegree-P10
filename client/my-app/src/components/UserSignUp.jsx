@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import {useNavigate} from "react-router-dom";
-import {useAuth} from "../AuthContext.jsx";
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext.jsx';
 
 function UserSignUp(props) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const navigate = useNavigate(); // Getting the navigate function
-
-  const {signUp} = useAuth(); // Accessing signUp funcion
+  const navigate = useNavigate();
+  const { signIn } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +19,8 @@ function UserSignUp(props) {
       setFirstName(value);
     } else if (name === 'lastName') {
       setLastName(value);
-    } else if (name === 'email') {
-      setEmail(value);
+    } else if (name === 'emailAddress') {
+      setEmailAddress(value);
     } else if (name === 'password') {
       setPassword(value);
     } else if (name === 'confirmPassword') {
@@ -31,10 +30,38 @@ function UserSignUp(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can implement the sign-up logic here using your authentication mechanism
-    // Example: Make a POST request to create a new user
-    // If successful, you can redirect to a protected route or automatically sign in the user
-    // If unsuccessful, you can display an error message
+
+    if (password !== confirmPassword) {
+      alert('Password and confirm password do not match.');
+      return;
+    }
+
+    try {
+      // Make a POST request to create a new user
+      const response = await axios.post('http://localhost:5001/api/users', {
+        firstName,
+        lastName,
+        emailAddress,
+        password,
+      }, {
+      headers: {
+        Authorization: 'Basic joe@smith.com:joepassword',
+        'Content-Type': 'application/json',
+      },
+      });
+
+      if (response.status === 201) {
+        // Successful user registration, you can redirect to a protected route or sign in the user
+        signIn(response.data);
+        navigate('/courses');
+      } else {
+        console.error(`User registration failed. Status: ${response.status}`);
+        // Display an error message or handle the error as needed
+      }
+    } catch (error) {
+      console.error('Error during user registration:', error);
+      // Handle the error, display an error message, etc.
+    }
   };
 
   const handleCancel = () => {
@@ -69,12 +96,12 @@ function UserSignUp(props) {
           />
         </div>
         <div>
-          <label htmlFor="email">Email Address:</label>
+          <label htmlFor="emailAddress">Email Address:</label>
           <input
             type="email"
-            id="email"
-            name="email"
-            value={email}
+            id="emailAddress"
+            name="emailAddress"
+            value={emailAddress}
             onChange={handleInputChange}
             required
           />
@@ -103,7 +130,9 @@ function UserSignUp(props) {
         </div>
         <div>
           <button type="submit">Sign Up</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>
