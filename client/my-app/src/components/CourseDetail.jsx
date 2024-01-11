@@ -17,7 +17,7 @@ function CourseDetail() {
         if (response.status === 200) {
           const data = response.data;
           setCourse(data);
-          console.log(user.id)
+
           // Check if the authenticated user's ID matches the course owner's ID
           setIsCourseOwner(user && user.id === data.userId);
         } else {
