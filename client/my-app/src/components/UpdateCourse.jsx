@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Courses from './Courses'; // Import the Courses component
+import {useAuth} from "../AuthContext.jsx";
 
 function UpdateCourse({ courses }) {
   const navigate = useNavigate();
   const { id } = useParams();
+  const {signOut} = useAuth();
 
   // Initialize the state with values from the selected course
   const [updatedCourse, setUpdatedCourse] = useState({
@@ -61,6 +63,11 @@ function UpdateCourse({ courses }) {
     navigate(`/courses/${id}`);
   };
 
+  const handleSignOut = () => {
+    signOut(); // Calling the signOut function.
+
+  }
+
   return (
     <div>
       <h2>Update Course</h2>
@@ -108,6 +115,7 @@ function UpdateCourse({ courses }) {
         <div>
           <button type="submit">Update Course</button>
           <button type="button" onClick={handleCancel}>Cancel</button>
+          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       </form>
     </div>

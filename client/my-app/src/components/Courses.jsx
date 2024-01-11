@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import {useAuth} from "../AuthContext.jsx"; // Importing the useAuth hook
 
 function Courses() { // No need to receive courses as a prop
   const [courses, setCourses] = useState([]);
+  const {signOut} = useAuth(); // Accessing the signOut function from the authentication context
 
   useEffect(() => {
     // Function to fetch the list of courses from your API
@@ -19,6 +21,13 @@ function Courses() { // No need to receive courses as a prop
     fetchCourses();
   }, []);
 
+  const handleSignOut = () => {
+
+      signOut(); // Calling the signOut function to sign out the user
+
+
+  }
+
   return (
     <div>
       <h2>List of Courses</h2>
@@ -30,6 +39,7 @@ function Courses() { // No need to receive courses as a prop
         ))}
       </ul>
       <Link to="create">Create Course</Link>
+      <button onClick={handleSignOut}>Sign Out</button> {/* Adding the Sign Out button */}
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'; // Import useParams
 import axios from 'axios';
+import {useAuth} from "../AuthContext.jsx";
 
 
 function CourseDetail() {
   const [course, setCourse] = useState(null);
   const { id } = useParams(); // Use the useParams hook to access route parameters
+  const {signOut} = useAuth();
 
   useEffect(() => {
     // Function to fetch the course details from your API
@@ -39,6 +41,11 @@ function CourseDetail() {
     }
   };
 
+  const handleSignOut = () => {
+    signOut(); // Calling the signOut function to sign the user out
+  };
+
+
   return (
     <div>
       {course ? (
@@ -48,6 +55,7 @@ function CourseDetail() {
           <p>{course.description}</p>
           <button onClick={handleDeleteCourse}>Delete Course</button>
           <Link to="update">Update Course</Link>
+          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (
         <p>Loading...</p>

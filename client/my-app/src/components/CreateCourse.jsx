@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {useAuth} from "../AuthContext.jsx";
 
 function CreateCourse() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
+  const { signOut } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +51,12 @@ function CreateCourse() {
   const handleCancel = () => {
     // Redirect the user to the default route (list of courses)
     navigate('/courses');
+  };
+
+  const handleSignOut = () => {
+
+   signOut();
+
   };
 
   return (
@@ -100,6 +108,7 @@ function CreateCourse() {
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>
+          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       </form>
     </div>
