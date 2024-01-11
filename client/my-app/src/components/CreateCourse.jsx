@@ -8,6 +8,7 @@ function CreateCourse() {
   const [description, setDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
+  const [validationErrors, setValidationErrors] = useState([]);
   const { signOut } = useAuth();
 
   const handleInputChange = (e) => {
@@ -40,6 +41,9 @@ function CreateCourse() {
         // Successful course creation, navigate to the course detail page
         const newCourseId = response.data.id;
         navigate(`/courses/${newCourseId}`);
+      } else if (response.status === 400) {
+        // Validation errors returned from the API
+        setValidationErrors(response.data.errors);
       } else {
         console.error(`Network response was not ok. Status: ${response.status}`);
       }
@@ -62,6 +66,16 @@ function CreateCourse() {
   return (
     <div>
       <h2>Create Course</h2>
+      {validationErrors.length > 0 && (
+          <div className="validation--errors">
+      <h3>Validation Errors</h3>
+      <ul>
+        {validationErrors.map((error, index) => (
+          <li key={index}>{error}</li>
+        ))}
+      </ul>
+    </div>
+  )}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>

@@ -8,6 +8,7 @@ function UpdateCourse({ courses }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const {signOut} = useAuth();
+  const [validationErrors, setValidationErrors] = useState([]);
 
   // Initialize the state with values from the selected course
   const [updatedCourse, setUpdatedCourse] = useState({
@@ -50,6 +51,9 @@ function UpdateCourse({ courses }) {
       if (response.status === 204) {
         // Successful update, navigate to the course detail page
         navigate(`/courses/${id}`);
+      } else if (response.status === 400) {
+        // Validation errors returned from the API
+        setValidationErrors(response.data.errors);
       } else {
         console.error(`Network response was not ok. Status: ${response.status}`);
       }
@@ -71,6 +75,16 @@ function UpdateCourse({ courses }) {
   return (
     <div>
       <h2>Update Course</h2>
+      {validationErrors.length > 0 && (
+    <div className="validation--errors">
+      <h3>Validation Errors</h3>
+      <ul>
+        {validationErrors.map((error, index) => (
+          <li key={index}>{error}</li>
+        ))}
+      </ul>
+    </div>
+  )}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
