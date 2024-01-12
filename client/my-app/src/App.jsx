@@ -3,6 +3,7 @@ import logo from './assets/logo.svg';
 import './styles/App.css';
 import AppRoutes from './Routes';
 import { AuthProvider } from './AuthContext'; // Import the AuthProvider
+import '../../../styles/global.css';
 
 function App() {
   return (
