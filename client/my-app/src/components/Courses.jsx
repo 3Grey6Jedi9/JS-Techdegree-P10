@@ -29,6 +29,7 @@ function Courses() { // No need to receive courses as a prop
   }
 
   return (
+      <body>
     <div>
       <h2>List of Courses</h2>
       <ul>
@@ -41,6 +42,7 @@ function Courses() { // No need to receive courses as a prop
       <Link to="create">Create Course</Link>
       <button onClick={handleSignOut}>Sign Out</button> {/* Adding the Sign Out button */}
     </div>
+    </body>
   );
 }
 
