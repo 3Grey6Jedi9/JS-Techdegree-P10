@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../AuthContext.jsx';
+import ReactMarkdown from 'react-markdown';
+
 
 function CourseDetail() {
   const [course, setCourse] = useState(null);
@@ -54,8 +56,9 @@ function CourseDetail() {
         <div>
           <h2>Course Detail</h2>
           <h3>{course.title}</h3>
-          <p>{course.description}</p>
-          {user && isCourseOwner && ( // Check if there's an authenticated user and if they are the course owner
+          <ReactMarkdown>{course.description}</ReactMarkdown>
+          <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
+          {user && isCourseOwner && (
             <div>
               <button onClick={handleDeleteCourse}>Delete Course</button>
               <Link to="update">Update Course</Link>
