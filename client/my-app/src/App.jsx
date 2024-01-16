@@ -5,11 +5,11 @@ import AppRoutes from './Routes';
 import { AuthProvider } from './AuthContext'; // Import the AuthProvider
 import '../../../styles/global.css';
 
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <AuthProvider> {/* Wrap your app with AuthProvider */}
           <AppRoutes />
         </AuthProvider>

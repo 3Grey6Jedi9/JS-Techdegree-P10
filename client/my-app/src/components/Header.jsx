@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Courses_Library from '../assets/Courses_Library.jpeg'
 
 function Header({ authenticatedUser, signOut }) {
   return (
     <div className="header header--flex">
       <div className="bounds wrap">
-        <h1 className="header--logo"><a href="/">Courses App</a></h1>
+          <img src={Courses_Library} className="" alt="logo" />
+        <h1 className="header--logo">Courses Library</h1>
         <nav>
           {authenticatedUser ? (
             <ul className="header--signedin">
