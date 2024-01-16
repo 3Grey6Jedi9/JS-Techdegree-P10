@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext.jsx';
+import Courses_Library from "../assets/Courses_Library.jpeg";
+import AliceDoor from '../assets/signin.png'
 
 function UserSignIn(props) {
   const [email, setEmail] = useState('');
@@ -52,6 +54,7 @@ function UserSignIn(props) {
 
   return (
     <div>
+       <img src={AliceDoor} className="header-logo-image" alt="signin" />
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
         <div>
