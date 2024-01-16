@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext.jsx';
+import '../styles/signup.css'
+import AliceDoor from "../assets/signin.png";
+import Rabbit from "../assets/signup.jpeg";
 
 function UserSignUp(props) {
   const [firstName, setFirstName] = useState('');
@@ -74,7 +77,8 @@ function UserSignUp(props) {
   };
 
   return (
-    <div className="form--centered">
+    <div className="user-signup-container">
+      <img src={Rabbit} className="user-signup-logo" alt="signup" />
       <h2>Sign Up</h2>
       {validationErrors.length > 0 && ( // Display validation errors if there are any
         <div className="validation--errors">
