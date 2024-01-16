@@ -15,13 +15,13 @@
 }
 
 .user-signup-logo {
-    width: 100px; /* fixed width of 100px */
-    height: 100px; /* fixed height of 100px */
+    width: 200px; /* fixed width of 100px */
+    height: 200px; /* fixed height of 100px */
     object-fit: cover; /* ensures the image covers the area without distorting aspect ratio */
     position: absolute; /* Position the image absolutely */
     top: 50%; /* Center vertically */
     right: -100px; /* Start the image off the left edge of the screen */
-    animation: slideRight 20s linear infinite; /* Animation settings */
+    animation: slideRight 60s linear infinite; /* Animation settings */
 
     /* Additional styles for the image */
     border-radius: 50%; /* Makes the image circular */
