@@ -243,13 +243,13 @@ input:focus, button:focus, .button:focus, textarea:focus {
 
 /* New CSS */
 .full-screen-header {
-    background: lightblue; /* light blue background */
+    background: darkslategrey; /* light blue background */
     width: 100vw; /* full viewport width */
     height: 100vh; /* full viewport height */
 }
 
 .custom-button {
-    background-color: green; /* green button background */
+    background-color: darkblue; /* green button background */
 }
 
 .header-logo-image {
@@ -259,27 +259,7 @@ input:focus, button:focus, .button:focus, textarea:focus {
 }
 
 
-/* NEW SIGNIN CSS */
-.user-signin-container {
-    background-image: url('./client/my-app/src/assets/woody.jpg'); /* Add your wood background image path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh; /* Full viewport height */
-}
 
-.user-signin-form button {
-    background-color: #8B4513; /* A reddish-brown tone for buttons */
-    color: white; /* Adjust text color as needed */
-    border: none; /* Remove default border */
-    padding: 10px 20px; /* Adjust padding as needed */
-    margin-top: 10px; /* Space between buttons and other elements */
-    border-radius: 5px; /* Rounded corners for buttons */
-}
-
-/* Adjust other button states as needed */
-.user-signin-form button:hover {
-    background-color: #A0522D; /* Darker shade for hover state */
-}
 
 
 

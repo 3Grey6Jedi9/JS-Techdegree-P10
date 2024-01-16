@@ -1,9 +1,17 @@
 /* UserSignIn.css */
 .user-signin-container {
-    background-image: url('../assets/woody.jpg'); /* Add your wood background image path */
+    background-color: brown;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh; /* Full viewport height */
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Position from the top edge of the viewport */
+    left: 0; /* Position from the left edge of the viewport */
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-signin-logo {
