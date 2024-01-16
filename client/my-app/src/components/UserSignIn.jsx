@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext.jsx';
 import Courses_Library from "../assets/Courses_Library.jpeg";
 import AliceDoor from '../assets/signin.png'
+import '../styles/signin.css'
+
+
 
 function UserSignIn(props) {
   const [email, setEmail] = useState('');
@@ -53,8 +56,8 @@ function UserSignIn(props) {
   };
 
   return (
-    <div>
-       <img src={AliceDoor} className="header-logo-image" alt="signin" />
+    <div className="user-signin-container">
+      <img src={AliceDoor} className="user-signin-logo" alt="signin" />
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -80,8 +83,8 @@ function UserSignIn(props) {
           />
         </div>
         <div>
-          <button type="submit">Sign In</button>
-          <button type="button" onClick={handleCancel}>
+          <button type="submit" className="user-signin-button">Sign In</button>
+          <button type="button" onClick={handleCancel} className="user-signin-button">
             Cancel
           </button>
         </div>
