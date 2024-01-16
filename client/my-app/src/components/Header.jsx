@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Courses_Library from '../assets/Courses_Library.jpeg'
+import Courses_Library from '../assets/Courses_Library.jpeg';
 
 function Header({ authenticatedUser, signOut }) {
   return (
-    <div className="header header--flex">
+    <div className="header header--flex full-screen-header">
       <div className="bounds wrap">
-          <img src={Courses_Library} className="" alt="logo" />
+        <img src={Courses_Library} className="header-logo-image" alt="logo" />
         <h1 className="header--logo">Courses Library</h1>
         <nav>
           {authenticatedUser ? (
             <ul className="header--signedin">
               <li>Welcome, {authenticatedUser.firstName}!</li>
               <li>
-                <Link className="signout button" to="/signout" onClick={signOut}>
+                <Link className="signout button custom-button" to="/signout" onClick={signOut}>
                   Sign Out
                 </Link>
               </li>
@@ -21,12 +21,12 @@ function Header({ authenticatedUser, signOut }) {
           ) : (
             <ul className="header--signedout">
               <li>
-                <Link className="signup button" to="/signup">
+                <Link className="signup button custom-button" to="/signup">
                   Sign Up
                 </Link>
               </li>
               <li>
-                <Link className="signin button" to="/signin">
+                <Link className="signin button custom-button" to="/signin">
                   Sign In
                 </Link>
               </li>

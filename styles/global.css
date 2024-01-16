@@ -240,3 +240,23 @@ input:focus, button:focus, .button:focus, textarea:focus {
     }
 }
 
+
+/* New CSS */
+.full-screen-header {
+    background: lightblue; /* light blue background */
+    width: 100vw; /* full viewport width */
+    height: 100vh; /* full viewport height */
+}
+
+.custom-button {
+    background-color: green; /* green button background */
+}
+
+.header-logo-image {
+    width: 800px; /* fixed width of 300px */
+    height: 400px; /* fixed height of 300px */
+    object-fit: cover; /* ensures the image covers the area without distorting aspect ratio */
+}
+
+
+
