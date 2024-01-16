@@ -20,8 +20,8 @@
     object-fit: cover; /* ensures the image covers the area without distorting aspect ratio */
     position: absolute; /* Position the image absolutely */
     top: 50%; /* Center vertically */
-    right: 100px; /* Start the image off the left edge of the screen */
-    animation: slideRight 10s linear infinite; /* Animation settings */
+    right: -100px; /* Start the image off the left edge of the screen */
+    animation: slideRight 20s linear infinite; /* Animation settings */
 
     /* Additional styles for the image */
     border-radius: 50%; /* Makes the image circular */
