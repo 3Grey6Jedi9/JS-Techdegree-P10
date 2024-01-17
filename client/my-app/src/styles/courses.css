@@ -56,9 +56,17 @@
 .course-name {
     font-weight: bold; /* Make the course name bold */
     padding-bottom: 20px;
-
+    font-size: 18px;
 
 }
+
+.course-title {
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #333; /* Adjust the text color as needed */
+}
+
+
+
 
 .signout-button {
     margin-right: 10px; /* Push the button to the right */
