@@ -40,7 +40,7 @@
 
 .course-box {
     background-color: lightgray;
-    padding: 20px;
+    padding: 60px;
     border-radius: 5px;
     text-align: center; /* Center text within the course box */
 }
@@ -52,10 +52,11 @@
 
 .course-name {
     font-weight: bold; /* Make the course name bold */
+
 }
 
 .signout-button {
     align-self: flex-end;
-    margin-right: 20px;
+    margin-right: 40px;
     margin-top: 10px; /* Adjust the top margin as needed */
 }
