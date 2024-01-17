@@ -46,7 +46,7 @@ function Courses() { // No need to receive courses as a prop
             </div>
           </li>
         ))}
-          <Link to="create" className="course-box">Create Course</Link>
+          <Link to="create" className="course-box">+ Create a New Course +</Link>
       </ul>
     </div>
   );
