@@ -9,7 +9,7 @@ function PrivateRoute() {
   return user ? (
     <Outlet />
   ) : (
-    <Navigate to="/signin" replace />
+    <Navigate to="/" replace />
   );
 }
 

@@ -20,6 +20,7 @@ export function AuthProvider({ children }) {
   const signOut = () => {
     // Implement sign-out logic and clear the user state
     setUser(null);
+
   };
 
   return (
