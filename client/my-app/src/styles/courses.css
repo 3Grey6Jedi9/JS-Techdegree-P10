@@ -9,7 +9,8 @@
     align-items: center;
     justify-content: flex-start; /* Align content to the top */
     overflow-y: auto;
-    margin-top: 60px;
+    margin-top: 0px;
+    background-color: white;
 
 }
 
@@ -20,15 +21,18 @@
     align-items: center;
     width: 100%;
     padding: 10px 20px; /* Add padding for spacing */
+    margin-bottom: 50px;
+    background-color: lightgreen;
 }
 
 
 
 .courses-title {
     align-self: flex-start;
-    margin-left: 60px;
+    margin-right: 10px; /* Adjust the left margin as needed */
     margin-top: 10px; /* Adjust the top margin as needed */
 }
+
 
 .courses-list {
     display: grid;
@@ -39,7 +43,7 @@
 }
 
 .course-box {
-    background-color: lightgray;
+    background-color: lightblue;
     padding: 60px;
     border-radius: 5px;
     text-align: center; /* Center text within the course box */
@@ -57,6 +61,7 @@
 
 .signout-button {
     align-self: flex-end;
-    margin-right: 40px;
+    margin-left: auto; /* Push the button to the right */
     margin-top: 10px; /* Adjust the top margin as needed */
 }
+
