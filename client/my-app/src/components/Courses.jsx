@@ -32,21 +32,21 @@ function Courses() { // No need to receive courses as a prop
   return (
     <div className="courses-container">
        <div className="courses-header">
+         <h2 className="courses-title">Courses</h2>
         <button onClick={handleSignOut} className="signout-button">Sign Out</button>
-        <h2 className="courses-title">Courses</h2>
     </div>
       <ul className="courses-list">
         {courses.map((course) => (
           <li key={course.id}>
             <div className="course-box">
               <Link to={`/courses/${course.id}`}>
-              <div className="course-name">Course</div>
+              <div className="course-name">Course {course.id}</div>
                   <div className="course-title">{course.title}</div>
               </Link>
             </div>
           </li>
         ))}
-          <Link to="create" className="button">Create Course</Link>
+          <Link to="create" className="course-box">Create Course</Link>
       </ul>
     </div>
   );
