@@ -31,7 +31,7 @@ function Courses() { // No need to receive courses as a prop
   return (
 
     <div>
-      <h2>List of Courses</h2>
+      <h2>Courses</h2>
       <ul>
         {courses.map((course) => (
           <li key={course.id}>
@@ -39,8 +39,8 @@ function Courses() { // No need to receive courses as a prop
           </li>
         ))}
       </ul>
-      <Link to="create">Create Course</Link>
-      <button onClick={handleSignOut}>Sign Out</button> {/* Adding the Sign Out button */}
+      <Link to="create" className="button">Create Course</Link>
+      <button onClick={handleSignOut} className="button">Sign Out</button> {/* Adding the Sign Out button */}
     </div>
 
   );

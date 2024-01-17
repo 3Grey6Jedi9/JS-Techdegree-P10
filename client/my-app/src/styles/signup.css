@@ -1,4 +1,11 @@
 /* UserSignUp.css */
+body, html {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    height: 100%; /* Full height of the viewport */
+    overflow: hidden; /* Hide scrollbars on the body */
+}
+
 .user-signup-container {
     background-color: lightseagreen;
     background-size: cover;
@@ -15,12 +22,12 @@
 }
 
 .user-signup-logo {
-    width: 200px; /* fixed width of 100px */
-    height: 200px; /* fixed height of 100px */
+    width: 100px; /* fixed width of 200px */
+    height: 100px; /* fixed height of 200px */
     object-fit: cover; /* ensures the image covers the area without distorting aspect ratio */
-    position: absolute; /* Position the image absolutely */
-    top: 50%; /* Center vertically */
-    right: -100px; /* Start the image off the left edge of the screen */
+    position: fixed; /* Position the image fixed at the top */
+    top: 0; /* Position at the top of the viewport */
+    right: 0; /* Position at the right edge of the viewport */
     animation: slideRight 60s linear infinite; /* Animation settings */
 
     /* Additional styles for the image */
@@ -36,7 +43,6 @@
     }
 }
 
-
 .user-signup-button {
     background-color: palevioletred; /* A reddish-brown tone for buttons */
     color: white; /* Adjust text color as needed */
@@ -49,6 +55,8 @@
 }
 
 /* Adjust other button states as needed */
-.user-signin-button:hover {
+.user-signup-button:hover {
     background-color: mediumvioletred; /* Darker shade for hover state */
 }
+
+/* Enable scrol

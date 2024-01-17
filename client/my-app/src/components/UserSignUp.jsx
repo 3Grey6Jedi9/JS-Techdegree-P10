@@ -137,7 +137,7 @@ function UserSignUp(props) {
           required
         />
         <button className="button" type="submit">Sign Up</button>
-        <button className="button button-secondary" type="button" onClick={handleCancel}>
+        <button className="button" type="button" onClick={handleCancel}>
           Cancel
         </button>
       </form>
