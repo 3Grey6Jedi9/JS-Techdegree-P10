@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import {useAuth} from "../AuthContext.jsx"; // Importing the useAuth hook
+import '../styles/courses.css'
 
 function Courses() { // No need to receive courses as a prop
   const [courses, setCourses] = useState([]);
@@ -29,20 +30,23 @@ function Courses() { // No need to receive courses as a prop
   }
 
   return (
-
-    <div>
-      <h2>Courses</h2>
-      <ul>
+    <div className="courses-container">
+        <button onClick={handleSignOut} className="signout-button">Sign Out</button>
+      <h2 className="courses-title">Courses</h2>
+      <ul className="courses-list">
         {courses.map((course) => (
           <li key={course.id}>
-            <Link to={`/courses/${course.id}`}>{course.title}</Link>
+            <div className="course-box">
+              <Link to={`/courses/${course.id}`}>
+              <div className="course-name">Course</div>
+                  <div className="course-title">{course.title}</div>
+              </Link>
+            </div>
           </li>
         ))}
+          <Link to="create" className="button">Create Course</Link>
       </ul>
-      <Link to="create" className="button">Create Course</Link>
-      <button onClick={handleSignOut} className="button">Sign Out</button> {/* Adding the Sign Out button */}
     </div>
-
   );
 }
 
