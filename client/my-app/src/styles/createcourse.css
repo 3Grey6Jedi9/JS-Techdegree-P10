@@ -32,7 +32,7 @@
 
 
 
-form {
+.create-form {
   max-width: 600px; /* Maximum width of the form */
   width: 100%;
   background-color: black;
