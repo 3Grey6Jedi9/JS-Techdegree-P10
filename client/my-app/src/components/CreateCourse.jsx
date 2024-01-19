@@ -67,7 +67,10 @@ function CreateCourse() {
 
   return (
     <div className="create-course-container">
+      <div className="create-header">
       <h2>Create Course</h2>
+      <button onClick={handleSignOut}>Sign Out</button>
+      </div>
       {validationErrors.length > 0 && (
           <div className="validation--errors">
       <h3>Validation Errors</h3>
@@ -124,7 +127,6 @@ function CreateCourse() {
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>
-          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       </form>
     </div>
