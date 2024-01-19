@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {useAuth} from "../AuthContext.jsx";
+import '../styles/createcourse.css'
+
 
 function CreateCourse() {
   const [title, setTitle] = useState('');
@@ -64,7 +66,7 @@ function CreateCourse() {
   };
 
   return (
-    <div>
+    <div className="create-course-container">
       <h2>Create Course</h2>
       {validationErrors.length > 0 && (
           <div className="validation--errors">
