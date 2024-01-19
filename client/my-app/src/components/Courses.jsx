@@ -6,7 +6,7 @@ import '../styles/courses.css'
 
 function Courses() { // No need to receive courses as a prop
   const [courses, setCourses] = useState([]);
-  const {signOut} = useAuth(); // Accessing the signOut function from the authentication context
+  const {signOut, user} = useAuth(); // Accessing the signOut function from the authentication context
 
   useEffect(() => {
     // Function to fetch the list of courses from your API
@@ -33,6 +33,7 @@ function Courses() { // No need to receive courses as a prop
     <div className="courses-container">
        <div className="courses-header">
          <h2 className="courses-title">Courses</h2>
+         <h4>Welcome, {user.firstName} {user.lastName}!</h4>
         <button onClick={handleSignOut} className="signout-button">Sign Out</button>
     </div>
       <ul className="courses-list">
