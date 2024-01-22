@@ -69,7 +69,7 @@ function CreateCourse() {
     <div className="create-course-container">
       <div className="create-header">
       <h2>Create Course</h2>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <button onClick={handleSignOut} className="create-signout">Sign Out</button>
       </div>
       {validationErrors.length > 0 && (
           <div className="validation--errors">
@@ -83,7 +83,7 @@ function CreateCourse() {
   )}
       <form onSubmit={handleSubmit} className="create-form">
         <div>
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="title" className="create-label">Title</label>
           <input
             type="text"
             id="title"
@@ -94,7 +94,7 @@ function CreateCourse() {
           />
         </div>
         <div>
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description" className="create-label">Description</label>
           <textarea
             id="description"
             name="description"
@@ -104,7 +104,7 @@ function CreateCourse() {
           />
         </div>
         <div>
-          <label htmlFor="estimatedTime">Estimated Time:</label>
+          <label htmlFor="estimatedTime" className="create-label">Estimated Time</label>
           <input
             type="text"
             id="estimatedTime"
@@ -114,7 +114,7 @@ function CreateCourse() {
           />
         </div>
         <div>
-          <label htmlFor="materialsNeeded">Materials Needed:</label>
+          <label htmlFor="materialsNeeded" className="create-label">Materials Needed</label>
           <textarea
             id="materialsNeeded"
             name="materialsNeeded"
