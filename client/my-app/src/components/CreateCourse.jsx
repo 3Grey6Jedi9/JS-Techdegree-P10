@@ -31,13 +31,22 @@ function CreateCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  const authHeaderValue = `Basic ${user.emailAddress}:${atob(user.password)} ` // Fixing this
+
+    console.log(authHeaderValue)
+
     try {
       const response = await axios.post('http://localhost:5001/api/courses', {
         title,
         description,
         estimatedTime,
         materialsNeeded,
-      });
+      },{
+    headers: {
+      Authorization: authHeaderValue, // Include the Basic Authentication header
+      'Content-Type': 'application/json', // Set the content type
+    },
+  });
 
       if (response.status === 201) {
         // Successful course creation, navigate to the course detail page
