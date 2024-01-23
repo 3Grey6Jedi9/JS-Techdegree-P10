@@ -56,21 +56,6 @@
   color: #f00;
 }
 
-/* Style for form fields */
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: lightpink;
-}
 
 button[type="submit"],
 button[type="button"] {
@@ -154,6 +139,9 @@ button[type="button"]:hover {
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 5px;
   font-weight: bold;
+  background-color: lightpink;
+  color: white;
+  font-size: 21px;
 }
 
 /* Style the smaller input or textarea */
