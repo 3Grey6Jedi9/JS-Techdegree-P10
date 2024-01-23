@@ -82,23 +82,13 @@ function CreateCourse() {
     </div>
   )}
       <form onSubmit={handleSubmit} className="create-form">
-        <div>
-          <label htmlFor="title" className="create-label">Title</label>
+        <div className="create-div-title">
+          <label htmlFor="title" className="create-label">Course Title</label>
           <input
             type="text"
             id="title"
             name="title"
             value={title}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="description" className="create-label">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={description}
             onChange={handleInputChange}
             required
           />
@@ -113,6 +103,17 @@ function CreateCourse() {
             onChange={handleInputChange}
           />
         </div>
+        <div>
+          <label htmlFor="description" className="create-label">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            value={description}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
         <div>
           <label htmlFor="materialsNeeded" className="create-label">Materials Needed</label>
           <textarea
