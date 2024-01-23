@@ -69,6 +69,7 @@ textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: lightpink;
 }
 
 button[type="submit"],
@@ -138,24 +139,34 @@ button[type="button"]:hover {
 
 /* Style the labels in the form */
 .create-label {
-  font-size: 33px; /* Adjust the font size as needed */
-  color: brown; /* Adjust the text color as needed */
+  font-size: 21px; /* Adjust the font size as needed */
+  color: cornflowerblue; /* Adjust the text color as needed */
   margin-bottom: 5px; /* Add margin below each label for spacing */
-  font-weight: lighter; /* Make labels bold if desired */
+  font-weight: bold; /* Make labels bold if desired */
+  margin-right: 500px;
 }
 
 /* Style the inputs and textareas within the grid */
 .create-form input,
 .create-form textarea {
-  width: 100%; /* Full width for inputs and textareas */
+  width: 80%; /* Full width for inputs and textareas */
   padding: 10px; /* Add padding for spacing */
   border: 1px solid #ccc; /* Add a border for visual separation */
   border-radius: 5px;
+  font-weight: bold;
 }
 
 /* Style the smaller input or textarea */
 .create-form .smaller-input {
   grid-column: span 1; /* Span one column */
+}
+
+
+.author {
+
+color: goldenrod;
+  font-size: 18px;
+  margin-right: 500px;
 }
 
 

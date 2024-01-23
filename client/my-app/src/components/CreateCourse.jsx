@@ -11,7 +11,7 @@ function CreateCourse() {
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -92,6 +92,7 @@ function CreateCourse() {
             onChange={handleInputChange}
             required
           />
+          <h2 className="author">By {user.firstName} {user.lastName}</h2>
         </div>
         <div>
           <label htmlFor="estimatedTime" className="create-label">Estimated Time</label>
@@ -133,5 +134,6 @@ function CreateCourse() {
     </div>
   );
 }
+
 
 export default CreateCourse;
