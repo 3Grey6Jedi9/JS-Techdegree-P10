@@ -32,19 +32,6 @@
 
 
 
-.create-form {
-  display: flex;
-  flex-wrap: wrap; /* Enable wrapping to create a 2-column layout */
-  max-width: 100%; /* Maximum width of the form */
-  width: 100%;
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-top: 150px;
-}
-
-
 
 /* Style for validation errors */
 .validation--errors {
@@ -126,19 +113,27 @@ button[type="button"]:hover {
 
 
 
-/* Style the div containing the title input */
-.create-div-title {
-  flex: 50%; /* Occupy 50% width of the form (2 columns) */
-  margin: 10px; /* Add margin between form elements */
-  box-sizing: border-box; /* Include padding and border in the width calculation */
+
+
+
+
+/* Style the form as a grid with 2 columns */
+.create-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  gap: 10px; /* Add gap between grid items */
+  max-width: 100%; /* Maximum width of the form */
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 150px;
 }
 
-
-/* Style the form elements within the form */
-.create-form > div {
-  flex: 0 0 calc(50% - 10px); /* Occupies 50% of the width with some spacing */
-  margin: 10px; /* Add margin between form elements */
-  box-sizing: border-box; /* Include padding and border in the width calculation */
+/* Style the form elements within the grid */
+.create-div-title {
+  grid-column: span 2; /* Span both columns for full width */
 }
 
 /* Style the labels in the form */
@@ -146,13 +141,23 @@ button[type="button"]:hover {
   font-size: 33px; /* Adjust the font size as needed */
   color: brown; /* Adjust the text color as needed */
   margin-bottom: 5px; /* Add margin below each label for spacing */
-  display: inline-block; /* Make labels inline-block elements to position them horizontally */
   font-weight: lighter; /* Make labels bold if desired */
-  vertical-align: top; /* Align labels to the top of the input elements */
-  width: 40%; /* Set a width to control the space occupied by labels */
-  text-align: right; /* Right-align the labels for a left-to-right layout */
-  padding-right: 10px; /* Add some padding to separate labels from inputs */
 }
+
+/* Style the inputs and textareas within the grid */
+.create-form input,
+.create-form textarea {
+  width: 100%; /* Full width for inputs and textareas */
+  padding: 10px; /* Add padding for spacing */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 5px;
+}
+
+/* Style the smaller input or textarea */
+.create-form .smaller-input {
+  grid-column: span 1; /* Span one column */
+}
+
 
 
 

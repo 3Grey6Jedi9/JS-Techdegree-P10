@@ -82,7 +82,7 @@ function CreateCourse() {
     </div>
   )}
       <form onSubmit={handleSubmit} className="create-form">
-        <div className="create-div-title">
+        <div className="smaller-input">
           <label htmlFor="title" className="create-label">Course Title</label>
           <input
             type="text"
