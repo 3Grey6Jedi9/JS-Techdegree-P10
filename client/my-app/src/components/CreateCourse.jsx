@@ -31,9 +31,11 @@ function CreateCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  const authHeaderValue = `Basic ${user.emailAddress}:${atob(user.password)} ` // Fixing this
-
-    console.log(authHeaderValue)
+  const authString = 'super@gmail.com:123';
+  const base64AuthString = btoa(authString);
+  const authHeaderValue = `Basic ${base64AuthString}`;
+   // Check the database and see the value of the password and try to see if the request is working
+    console.log(user.id)
 
     try {
       const response = await axios.post('http://localhost:5001/api/courses', {
@@ -41,9 +43,10 @@ function CreateCourse() {
         description,
         estimatedTime,
         materialsNeeded,
+        userId: user.id, // Add userId to the request payload
       },{
     headers: {
-      Authorization: authHeaderValue, // Include the Basic Authentication header
+      Authorization: authHeaderValue,
       'Content-Type': 'application/json', // Set the content type
     },
   });
