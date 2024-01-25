@@ -31,7 +31,13 @@ function CreateCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  const authString = `${user.emailAddress}:123`;
+    // Use window.prompt() to ask for the password
+  const userPassword = window.prompt('Enter your password to create the course:');
+  if (!userPassword) {
+    // User canceled the prompt
+    return;
+  }
+  const authString = `${user.emailAddress}:${userPassword}`;
   const base64AuthString = btoa(authString);
   const authHeaderValue = `Basic ${base64AuthString}`;
    // Check the database and see the value of the password and try to see if the request is working
