@@ -31,7 +31,7 @@ function CreateCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  const authString = 'super@gmail.com:123';
+  const authString = `${user.emailAddress}:123`;
   const base64AuthString = btoa(authString);
   const authHeaderValue = `Basic ${base64AuthString}`;
    // Check the database and see the value of the password and try to see if the request is working
