@@ -55,8 +55,6 @@ const handleVerification = () => {
   const authString = `${user.emailAddress}:${userPassword}`;
   const base64AuthString = btoa(authString);
   const authHeaderValue = `Basic ${base64AuthString}`;
-   // Check the database and see the value of the password and try to see if the request is working
-    console.log(user.id)
 
     try {
       const response = await axios.post('http://localhost:5001/api/courses', {
@@ -75,6 +73,7 @@ const handleVerification = () => {
       if (response.status === 201) {
         // Successful course creation, navigate to the course detail page
         const newCourseId = response.data.id;
+        console.log(`${newCourseId}COOL`) // DATA IS NOT DEFINED FIX IT
         navigate(`/courses/${newCourseId}`);
       } else if (response.status === 400) {
         // Validation errors returned from the API
