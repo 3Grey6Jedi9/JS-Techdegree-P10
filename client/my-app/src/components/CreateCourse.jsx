@@ -26,10 +26,25 @@ function CreateCourse() {
     }
   };
 
+
+
+const handleVerification = () => {
+    // Check if title and description are not null
+    if (title !== '' && description !== '') {
+      // If both fields are not null, trigger handleSubmit
+      handleSubmit();
+    } else {
+      // If either field is null, display validation error
+      setValidationErrors(['Please provide values for both "title" and "description"']);
+    }
+  };
+
+
+
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
     // Use window.prompt() to ask for the password
   const userPassword = window.prompt('Enter your password to create the course:');
@@ -143,7 +158,7 @@ function CreateCourse() {
           />
         </div>
         <div>
-          <button type="submit">Create Course</button>
+          <button type="button" onClick={handleVerification}>Create Course</button>
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>
