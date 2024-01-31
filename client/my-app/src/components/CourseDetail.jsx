@@ -82,8 +82,8 @@ function CourseDetail() {
     </div>
         {user && isCourseOwner && (
             <div className="detail-header-buttons">
-              <Link to="/courses" className="signout-button">Go back to courses</Link>
-              <button onClick={handleDeleteCourse}>Delete Course</button>
+              <Link to="/courses" className="signout-button">Go back to Courses</Link>
+              <button onClick={handleDeleteCourse} className="delete">Delete Course</button>
               <Link to="update" className="signout-button">Update Course</Link>
             </div>
           )}
@@ -92,7 +92,7 @@ function CourseDetail() {
         <div className="content-container">
   <div className="left-column">
     <h3 className="section">{course.title}</h3>
-    <h3>Description</h3>
+    <h4>Description</h4>
     <ReactMarkdown className="section">{course.description}</ReactMarkdown>
   </div>
   <div className="right-column">
