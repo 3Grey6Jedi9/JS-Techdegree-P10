@@ -82,8 +82,9 @@ function CourseDetail() {
     </div>
         {user && isCourseOwner && (
             <div className="detail-header-buttons">
+              <Link to="/courses" className="signout-button">Go back to courses</Link>
               <button onClick={handleDeleteCourse}>Delete Course</button>
-              <Link to="update">Update Course</Link>
+              <Link to="update" className="signout-button">Update Course</Link>
             </div>
           )}
     <div>
