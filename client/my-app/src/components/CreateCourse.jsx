@@ -73,8 +73,9 @@ const handleVerification = () => {
       if (response.status === 201) {
         // Successful course creation, navigate to the course detail page
         const newCourseId = response.data.id;
-        console.log(`${newCourseId}COOL`) // DATA IS NOT DEFINED FIX IT
-        navigate(`/courses/${newCourseId}`);
+        console.log('Response Data:', response);
+        console.log(`${newCourseId}`) // DATA IS NOT DEFINED FIX IT
+        //navigate(`/courses/${newCourseId}`);
       } else if (response.status === 400) {
         // Validation errors returned from the API
         setValidationErrors(response.data.errors);

@@ -58,6 +58,7 @@ function CourseDetail() {
           <h3>{course.title}</h3>
           <ReactMarkdown>{course.description}</ReactMarkdown>
           <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
+          <ReactMarkdown>{course.estimatedTime}</ReactMarkdown>
           {user && isCourseOwner && (
             <div>
               <button onClick={handleDeleteCourse}>Delete Course</button>

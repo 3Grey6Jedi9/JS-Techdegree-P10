@@ -84,7 +84,8 @@ router.post('/api/courses', authenticateUser, async (req, res) => {
       const newCourse = await Course.create({
         title: courseData.title,
         description: courseData.description,
-        // Other course properties...
+        estimatedTime:courseData.estimatedTime,
+        materialsNeeded:courseData.materialsNeeded,
         userId: courseData.userId,
       });
       // Setting the Location header to the URI for the newly created course
