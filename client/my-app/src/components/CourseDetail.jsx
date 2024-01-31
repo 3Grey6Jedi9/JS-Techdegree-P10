@@ -56,7 +56,7 @@ function CourseDetail() {
     },
   });
 
-  if (response.status === 200) {
+  if (response.status >= 200 && response.status < 400) {
     // Course deleted successfully, navigate to the courses list
     navigate('/courses');
   } else {
