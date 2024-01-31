@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../AuthContext.jsx';
 import ReactMarkdown from 'react-markdown';
@@ -10,6 +10,9 @@ function CourseDetail() {
   const { id } = useParams();
   const { user, signOut } = useAuth(); // Access the authenticated user and signOut function
   const [isCourseOwner, setIsCourseOwner] = useState(false); // State to track if the user is the course owner
+
+    const navigate = useNavigate();
+
 
   useEffect(() => {
     // Function to fetch the course details from your API
@@ -34,16 +37,34 @@ function CourseDetail() {
   }, [id, user]); // Fetch details when the 'id' parameter changes or when the user changes
 
   const handleDeleteCourse = async () => {
-    try {
-      const response = await axios.delete(`http://localhost:5001/api/courses/${id}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      // Redirect to the Courses screen or perform any other action upon successful deletion
-      // You can use history.push here, or any other routing mechanism you're using
-    } catch (error) {
-      console.error('Error deleting course:', error);
-    }
+
+      // Use window.prompt() to ask for the password
+  const userPassword = window.prompt('Enter your password to delete the course:');
+  if (!userPassword) {
+    // User canceled the prompt
+    return;
+  }
+   const authString = `${user.emailAddress}:${userPassword}`;
+   const base64AuthString = btoa(authString);
+   const authHeaderValue = `Basic ${base64AuthString}`;
+
+
+   try {
+  const response = await axios.delete(`http://localhost:5001/api/courses/${id}`, {
+    headers: {
+      Authorization: authHeaderValue,
+    },
+  });
+
+  if (response.status === 200) {
+    // Course deleted successfully, navigate to the courses list
+    navigate('/courses');
+  } else {
+    console.error(`Network response was not ok. Status: ${response.status}`);
+  }
+} catch (error) {
+  console.error('Error deleting course:', error);
+}
   };
 
   const handleSignOut = () => {
