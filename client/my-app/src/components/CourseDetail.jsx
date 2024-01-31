@@ -3,6 +3,8 @@ import {Link, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../AuthContext.jsx';
 import ReactMarkdown from 'react-markdown';
+import '../styles/courses.css'
+
 
 
 function CourseDetail() {
@@ -22,7 +24,6 @@ function CourseDetail() {
         if (response.status === 200) {
           const data = response.data;
           setCourse(data);
-
           // Check if the authenticated user's ID matches the course owner's ID
           setIsCourseOwner(user && user.id === data.userId);
         } else {
@@ -72,6 +73,18 @@ function CourseDetail() {
   };
 
   return (
+      <div className="courses-container">
+      <div className="courses-header">
+         <h2 className="courses-title">Course Detail</h2>
+         <h4>I hope you like this course, {user.firstName} {user.lastName}!</h4>
+        <button onClick={handleSignOut} className="signout-button">Sign Out</button>
+    </div>
+        {user && isCourseOwner && (
+            <div className="detail-header-buttons">
+              <button onClick={handleDeleteCourse}>Delete Course</button>
+              <Link to="update">Update Course</Link>
+            </div>
+          )}
     <div>
       {course ? (
         <div>
@@ -80,18 +93,12 @@ function CourseDetail() {
           <ReactMarkdown>{course.description}</ReactMarkdown>
           <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
           <ReactMarkdown>{course.estimatedTime}</ReactMarkdown>
-          {user && isCourseOwner && (
-            <div>
-              <button onClick={handleDeleteCourse}>Delete Course</button>
-              <Link to="update">Update Course</Link>
-            </div>
-          )}
-          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (
         <p>Loading...</p>
       )}
     </div>
+      </div>
   );
 }
 

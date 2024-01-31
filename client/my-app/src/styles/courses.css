@@ -10,7 +10,7 @@
     justify-content: flex-start; /* Align content to the top */
     overflow-y: auto;
     margin-top: 0px;
-    background-color: white;
+    background-color: black;
 
 }
 
@@ -21,9 +21,26 @@
     align-items: center;
     width: 100%;
     padding: 10px 20px; /* Add padding for spacing */
-    margin-bottom: 50px;
+    margin-bottom: 0;
     background-color: lightgreen;
 }
+
+
+.detail-header-buttons {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+    padding: 10px 20px; /* Add padding for spacing */
+    margin-bottom: 50px;
+    background-color: darkgreen;
+
+
+}
+
+
 
 
 
