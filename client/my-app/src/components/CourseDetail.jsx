@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useAuth } from '../AuthContext.jsx';
 import ReactMarkdown from 'react-markdown';
 import '../styles/courses.css'
+import '../styles/coursedetail.css'
 
 
 
@@ -87,13 +88,19 @@ function CourseDetail() {
           )}
     <div>
       {course ? (
-        <div>
-          <h2>Course Detail</h2>
-          <h3>{course.title}</h3>
-          <ReactMarkdown>{course.description}</ReactMarkdown>
-          <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
-          <ReactMarkdown>{course.estimatedTime}</ReactMarkdown>
-        </div>
+        <div className="content-container">
+  <div className="left-column">
+    <h3 className="section">{course.title}</h3>
+    <h3>Description</h3>
+    <ReactMarkdown className="section">{course.description}</ReactMarkdown>
+  </div>
+  <div className="right-column">
+    <h3>Materials</h3>
+    <ReactMarkdown className="section">{course.materialsNeeded}</ReactMarkdown>
+    <h3>Duration</h3>
+    <ReactMarkdown className="section">{course.estimatedTime}</ReactMarkdown>
+  </div>
+</div>
       ) : (
         <p>Loading...</p>
       )}

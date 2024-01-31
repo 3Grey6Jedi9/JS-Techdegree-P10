@@ -1,0 +1,21 @@
+/* Assuming this is the container for the content */
+.content-container {
+  display: flex;
+  justify-content: space-between; /* Space between the two columns */
+  align-items: flex-start; /* Align items to the top */
+}
+
+/* Left column for title and description */
+.left-column {
+  width: 60%;
+}
+
+/* Right column for materialsNeeded and estimatedTime */
+.right-column {
+  width: 40%;
+}
+
+/* Style for each individual section (e.g., title, description, materialsNeeded, estimatedTime) */
+.section {
+  margin-bottom: 20px; /* Add some spacing between sections */
+}
