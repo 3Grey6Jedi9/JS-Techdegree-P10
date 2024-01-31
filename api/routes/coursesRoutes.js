@@ -91,7 +91,16 @@ router.post('/api/courses', authenticateUser, async (req, res) => {
       // Setting the Location header to the URI for the newly created course
       res.location(`/api/courses/${newCourse.id}`);
       // Returning a 201 Created status code and no content
-      res.status(201).end();
+
+      // Fetch the newly created course including its details
+  const createdCourse = await Course.findByPk(newCourse.id, {
+    attributes: ['id', 'title', 'description', 'estimatedTime', 'materialsNeeded', 'userId'],
+    include: {
+      model: User,
+      attributes: ['firstName', 'lastName', 'emailAddress'],
+    },
+  });
+      res.status(201).json(createdCourse).end();
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'An error occurred during course creation' });
