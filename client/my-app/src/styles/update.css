@@ -3,16 +3,21 @@
   display: grid;
   grid-template-columns: 1fr 1fr; /* Create two equal-width columns */
   grid-gap: 20px; /* Add some spacing between columns */
+  width: 100%;
 }
 
 /* Left column for title and description */
 .left-column {
   grid-column: 1 / 2; /* Place in the first column */
+  margin-left: 200px;
+  margin-top: 100px;
 }
 
 /* Right column for materialsNeeded and estimatedTime */
 .right-column {
   grid-column: 2 / 3; /* Place in the second column */
+  margin-left: 100px;
+  margin-top: 100px;
 }
 
 /* Style for each individual section (e.g., title, description, materialsNeeded, estimatedTime) */
