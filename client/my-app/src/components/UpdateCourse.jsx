@@ -94,7 +94,7 @@ function UpdateCourse({ courses }) {
   )}
       <form onSubmit={handleSubmit} className="form-container">
         <div className="left-column">
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="title" className="label-title">Title:</label>
           <input
             type="text"
             id="title"
@@ -115,7 +115,7 @@ function UpdateCourse({ courses }) {
           />
         </div>
         <div className="right-column">
-          <label htmlFor="estimatedTime">Estimated Time:</label>
+          <label htmlFor="estimatedTime" className="label-estimatedTime">Estimated Time:</label>
           <input
             type="text"
             id="estimatedTime"
