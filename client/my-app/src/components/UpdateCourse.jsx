@@ -3,11 +3,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Courses from './Courses'; // Import the Courses component
 import {useAuth} from "../AuthContext.jsx";
+import '../styles/update.css'
+import '../styles/courses.css'
+
 
 function UpdateCourse({ courses }) {
   const navigate = useNavigate();
   const { id } = useParams();
-  const {signOut} = useAuth();
+  const {signOut, user} = useAuth();
   const [validationErrors, setValidationErrors] = useState([]);
 
   // Initialize the state with values from the selected course
@@ -73,8 +76,12 @@ function UpdateCourse({ courses }) {
   }
 
   return (
-    <div>
-      <h2>Update Course</h2>
+    <div className="courses-container">
+      <div className="courses-header">
+        <h2 className="courses-title">Update Course</h2>
+        <h4>Something wrong {user.firstName} {user.lastName}?</h4>
+        <button onClick={handleSignOut}>Sign Out</button>
+      </div>
       {validationErrors.length > 0 && (
     <div className="validation--errors">
       <h3>Validation Errors</h3>
@@ -85,8 +92,8 @@ function UpdateCourse({ courses }) {
       </ul>
     </div>
   )}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="form-container">
+        <div className="left-column">
           <label htmlFor="title">Title:</label>
           <input
             type="text"
@@ -97,7 +104,7 @@ function UpdateCourse({ courses }) {
             required
           />
         </div>
-        <div>
+        <div className="left-column">
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -107,7 +114,7 @@ function UpdateCourse({ courses }) {
             required
           />
         </div>
-        <div>
+        <div className="right-column">
           <label htmlFor="estimatedTime">Estimated Time:</label>
           <input
             type="text"
@@ -117,7 +124,7 @@ function UpdateCourse({ courses }) {
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="right-column">
           <label htmlFor="materialsNeeded">Materials Needed:</label>
           <textarea
             id="materialsNeeded"
@@ -129,7 +136,6 @@ function UpdateCourse({ courses }) {
         <div>
           <button type="submit">Update Course</button>
           <button type="button" onClick={handleCancel}>Cancel</button>
-          <button onClick={handleSignOut}>Sign Out</button>
         </div>
       </form>
     </div>

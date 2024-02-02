@@ -1,0 +1,27 @@
+/* Left column for title and description */
+.left-column {
+  width: 50%; /* Reduce the width to 50% */
+  float: left; /* Float the left column to the left */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+/* Right column for materialsNeeded and estimatedTime */
+.right-column {
+  width: 50%; /* Set the width to 50% for the right column */
+  float: left; /* Float the right column to the left */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+/* Style for each individual section (e.g., title, description, materialsNeeded, estimatedTime) */
+.section {
+  margin-bottom: 20px; /* Add some spacing between sections */
+  text-align: left; /* Align text to the left */
+  clear: both; /* Clear the floated elements to prevent layout issues */
+}
+
+/* Clearfix to ensure proper container height */
+.form-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
