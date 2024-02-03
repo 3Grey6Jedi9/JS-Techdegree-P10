@@ -10,7 +10,7 @@
     justify-content: flex-start; /* Align content to the top */
     overflow-y: auto;
     margin-top: 0px;
-    background-color: black;
+    background-color: white;
 
 }
 
@@ -35,7 +35,7 @@
     margin-top: 0;
     padding: 10px 20px; /* Add padding for spacing */
     margin-bottom: 50px;
-    background-color: darkgreen;
+    background-color: lightgoldenrodyellow;
 
 
 }

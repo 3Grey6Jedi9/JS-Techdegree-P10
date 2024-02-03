@@ -74,7 +74,7 @@ function CourseDetail() {
   };
 
   return (
-      <div className="courses-container">
+      <div className="detail-container">
       <div className="courses-header">
          <h2 className="courses-title">Course Detail</h2>
          <h4>I hope you like this course, {user.firstName} {user.lastName}!</h4>
@@ -91,6 +91,7 @@ function CourseDetail() {
       {course ? (
         <div className="content-container">
   <div className="left-column">
+    <h3>Title</h3>
     <h3 className="section">{course.title}</h3>
     <h4>Description</h4>
     <ReactMarkdown className="section">{course.description}</ReactMarkdown>
