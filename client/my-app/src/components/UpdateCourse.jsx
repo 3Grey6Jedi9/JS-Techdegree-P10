@@ -48,21 +48,39 @@ function UpdateCourse({ courses }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+
+    const userPassword = window.prompt('Enter your password to update the course:');
+  if (!userPassword) {
+    // User canceled the prompt
+    return;
+  }
+   const authString = `${user.emailAddress}:${userPassword}`;
+   const base64AuthString = btoa(authString);
+   const authHeaderValue = `Basic ${base64AuthString}`;
+
+
     try {
-      const response = await axios.put(`http://localhost:5001/api/courses/${id}`, updatedCourse);
-      if (response.status === 204) {
-        // Successful update, navigate to the course detail page
-        navigate(`/courses/${id}`);
-      } else if (response.status === 400) {
-        // Validation errors returned from the API
-        setValidationErrors(response.data.errors);
-      } else {
-        console.error(`Network response was not ok. Status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error updating course:', error);
-    }
+  const response = await axios.put(`http://localhost:5001/api/courses/${id}`, updatedCourse, {
+    headers: {
+      Authorization: authHeaderValue,
+      'Content-Type': 'application/json',
+    },
+  });
+  console.log(response.status)
+  if (response.status >= 200 && response.status < 400) {
+    console.log(id)
+    // Successful update, navigate to the course detail page
+    navigate(`/courses/${id}`);
+  } else if (response.status === 400) {
+    // Validation errors returned from the API
+    setValidationErrors(response.data.errors);
+  } else {
+    console.error(`Network response was not ok. Status: ${response.status}`);
+  }
+} catch (error) {
+  console.error('Error updating course:', error);
+}
+
   };
 
   const handleCancel = () => {
