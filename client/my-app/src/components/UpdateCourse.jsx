@@ -113,7 +113,7 @@ function UpdateCourse({ courses }) {
   )}
       <form onSubmit={handleSubmit} className="form-container">
         <div className="left-column">
-          <label htmlFor="title" className="label-title">Title:</label>
+          <label htmlFor="title" className="label-title">Title</label>
           <input
             type="text"
             id="title"
@@ -124,7 +124,7 @@ function UpdateCourse({ courses }) {
           />
         </div>
         <div className="right-column">
-          <label htmlFor="estimatedTime" className="label-estimatedTime">Estimated Time:</label>
+          <label htmlFor="estimatedTime" className="label-estimatedTime">Estimated Time</label>
           <input
             type="text"
             id="estimatedTime"
@@ -134,7 +134,7 @@ function UpdateCourse({ courses }) {
           />
         </div>
         <div className="left-column">
-          <label htmlFor="description">Description:</label>
+          <label htmlFor="description">Description</label>
           <textarea
             id="description"
             name="description"
@@ -145,7 +145,7 @@ function UpdateCourse({ courses }) {
         </div>
 
         <div className="right-column">
-          <label htmlFor="materialsNeeded">Materials Needed:</label>
+          <label htmlFor="materialsNeeded">Materials Needed</label>
           <textarea
             id="materialsNeeded"
             name="materialsNeeded"
