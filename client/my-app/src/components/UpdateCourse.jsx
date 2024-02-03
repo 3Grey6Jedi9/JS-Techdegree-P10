@@ -48,6 +48,7 @@ function UpdateCourse({ courses }) {
   };
 
   const handleSubmit = async (e) => {
+          e.preventDefault()
 
     const userPassword = window.prompt('Enter your password to update the course:');
   if (!userPassword) {
@@ -59,6 +60,7 @@ function UpdateCourse({ courses }) {
    const authHeaderValue = `Basic ${base64AuthString}`;
 
 
+
     try {
   const response = await axios.put(`http://localhost:5001/api/courses/${id}`, updatedCourse, {
     headers: {
@@ -66,9 +68,7 @@ function UpdateCourse({ courses }) {
       'Content-Type': 'application/json',
     },
   });
-  console.log(response.status)
   if (response.status >= 200 && response.status < 400) {
-    console.log(id)
     // Successful update, navigate to the course detail page
     navigate(`/courses/${id}`);
   } else if (response.status === 400) {
@@ -80,6 +80,7 @@ function UpdateCourse({ courses }) {
 } catch (error) {
   console.error('Error updating course:', error);
 }
+
 
   };
 
