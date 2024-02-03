@@ -139,6 +139,8 @@ router.put('/api/courses/:id', authenticateUser, async (req, res) => {
         await course.update({
           title: courseData.title,
           description: courseData.description,
+          estimatedTime:courseData.estimatedTime,
+          materialsNeeded:courseData.materialsNeeded,
         });
         res.status(204).end();
       }
