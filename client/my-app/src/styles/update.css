@@ -2,7 +2,7 @@
 .form-container {
   display: grid;
   grid-template-columns: 2fr 1fr; /* Create two equal-width columns */
-  grid-gap: 20px; /* Add some spacing between columns */
+  grid-gap: 0px; /* Add some spacing between columns */
   width: 100%;
 }
 
@@ -10,7 +10,6 @@
 .left-column {
   grid-column: 1 / 2; /* Place in the first column */
   margin-left: 200px;
-  margin-top: 100px;
 }
 
 /* Right column for materialsNeeded and estimatedTime */
@@ -40,4 +39,13 @@ textarea {
 }
 
 
+.update-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px; /* Add padding for spacing */
+    margin-bottom: 50px;
+    background-color: lightgreen;
+}
 

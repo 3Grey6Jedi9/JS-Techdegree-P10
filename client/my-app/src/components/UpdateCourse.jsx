@@ -96,7 +96,7 @@ function UpdateCourse({ courses }) {
 
   return (
     <div className="courses-container">
-      <div className="courses-header">
+      <div className="update-header">
         <h2 className="courses-title">Update Course</h2>
         <h4>Something wrong {user.firstName} {user.lastName}?</h4>
         <button onClick={handleSignOut}>Sign Out</button>
