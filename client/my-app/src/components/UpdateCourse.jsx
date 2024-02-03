@@ -123,16 +123,6 @@ function UpdateCourse({ courses }) {
             required
           />
         </div>
-        <div className="left-column">
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            name="description"
-            value={updatedCourse.description}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
         <div className="right-column">
           <label htmlFor="estimatedTime" className="label-estimatedTime">Estimated Time:</label>
           <input
@@ -143,6 +133,17 @@ function UpdateCourse({ courses }) {
             onChange={handleInputChange}
           />
         </div>
+        <div className="left-column">
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            value={updatedCourse.description}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
         <div className="right-column">
           <label htmlFor="materialsNeeded">Materials Needed:</label>
           <textarea

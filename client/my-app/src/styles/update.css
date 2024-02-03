@@ -17,7 +17,7 @@
 .right-column {
   grid-column: 2 / 3; /* Place in the second column */
   margin-left: 100px;
-  margin-top: 0;
+  margin-top: 0px;
 }
 
 /* Style for each individual section (e.g., title, description, materialsNeeded, estimatedTime) */
