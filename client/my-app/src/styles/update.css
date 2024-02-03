@@ -1,7 +1,7 @@
 /* Container for the form */
 .form-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Create two equal-width columns */
+  grid-template-columns: 1.8fr 1fr; /* Create two equal-width columns */
   grid-gap: 0px; /* Add some spacing between columns */
   width: 100%;
 }
@@ -15,7 +15,7 @@
 /* Right column for materialsNeeded and estimatedTime */
 .right-column {
   grid-column: 2 / 3; /* Place in the second column */
-  margin-left: 100px;
+  margin-left: 50px;
   margin-top: 0px;
 }
 
