@@ -51,9 +51,27 @@ function UpdateCourse({ courses }) {
         setUpdatedCourse(data);
       } else {
         console.error(`Network response was not ok. Status: ${response.status}`);
+        if (response.status === 404){
+            navigate('/notfound')
+          } else if(response.status === 403) {
+            navigate('/forbidden')
+
+          } else {
+
+            navigate('/error')
+          }
       }
     } catch (error) {
       console.error('Error fetching course details:', error);
+      if (response.status === 404){
+            navigate('/notfound')
+          } else if(response.status === 403) {
+            navigate('/forbidden')
+
+          } else {
+
+            navigate('/error')
+          }
     }
   };
 
