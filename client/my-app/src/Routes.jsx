@@ -11,6 +11,9 @@ import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
 import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
 import courses from "./components/Courses";
+import Forbidden from "./components/Forbidden.jsx";
+import NotFound from "./components/NotFound.jsx";
+import UnhandledError from "./components/UnhandledError.jsx";
 
 
 function AppRoutes() {
@@ -37,6 +40,13 @@ function AppRoutes() {
         {/* Unprotected Routes */}
         <Route path="/signin" element={<UserSignIn />} />
         <Route path="/signup" element={<UserSignUp />} />
+
+        {/* Error Routes */}
+        <Route path="/notfound" element={<NotFound />} />
+        <Route path="/forbidden" element={<Forbidden />} />
+        <Route path="/error" element={<UnhandledError />} />
+
+
       </Routes>
     </Router>
   );
