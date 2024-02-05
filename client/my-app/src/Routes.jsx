@@ -30,11 +30,12 @@ function AppRoutes() {
           }
         >
           {/* Use relative paths for nested routes */}
-          <Route index element={<Courses />} /> {/* Default route */}
+          <Route path="" element={<Courses />} /> {/* Default route */}
           <Route path="create" element={<CreateCourse />} />
           <Route path=":id/update" element={<UpdateCourse courses={courses} />} />
           <Route path=":id" element={<CourseDetail />} />
           <Route path="signout" element={<UserSignOut />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         {/* Unprotected Routes */}

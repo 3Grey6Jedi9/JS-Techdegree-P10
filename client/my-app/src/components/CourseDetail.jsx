@@ -41,9 +41,9 @@ function CourseDetail() {
         }
       } catch (error) {
         console.error('Error fetching course details:', error);
-        if (response.status === 404){
+        if (error.response.status === 404){
             navigate('/notfound')
-          } else if(response.status === 403) {
+          } else if(error.response.status === 403) {
             navigate('/forbidden')
 
           } else {
