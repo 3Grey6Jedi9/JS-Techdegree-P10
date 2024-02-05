@@ -46,6 +46,8 @@ function AppRoutes() {
         <Route path="/forbidden" element={<Forbidden />} />
         <Route path="/error" element={<UnhandledError />} />
 
+        {/* Catch-all route for undefined paths */}
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
     </Router>
