@@ -13,6 +13,24 @@ function UpdateCourse({ courses }) {
   const {signOut, user} = useAuth();
   const [validationErrors, setValidationErrors] = useState([]);
 
+
+ const handleVerification = () => {
+  // Check if there are validation errors
+
+    // Check if title and description are not null
+    if (updatedCourse.title !== '' && updatedCourse.description.trim() !== '') {
+      // If both fields are not null, trigger handleSubmit
+      handleSubmit();
+    } else {
+      // If either field is null, display validation error
+      setValidationErrors(['Please provide values for both "title" and "description"']);
+    }
+
+};
+
+
+
+
   // Initialize the state with values from the selected course
   const [updatedCourse, setUpdatedCourse] = useState({
     title: '',
@@ -39,6 +57,8 @@ function UpdateCourse({ courses }) {
     }
   };
 
+
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedCourse({
@@ -48,7 +68,6 @@ function UpdateCourse({ courses }) {
   };
 
   const handleSubmit = async (e) => {
-          e.preventDefault()
 
     const userPassword = window.prompt('Enter your password to update the course:');
   if (!userPassword) {
@@ -154,7 +173,7 @@ function UpdateCourse({ courses }) {
           />
         </div>
         <div>
-          <button type="submit">Update Course</button>
+          <button type="button" onClick={handleVerification}>Update Course</button>
           <button type="button" onClick={handleCancel}>Cancel</button>
         </div>
       </form>
