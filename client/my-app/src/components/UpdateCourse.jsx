@@ -117,9 +117,15 @@ function UpdateCourse({ courses }) {
     setValidationErrors(response.data.errors);
   } else {
     console.error(`Network response was not ok. Status: ${response.status}`);
+    if (response.status === 500) {
+      navigate('/error')
+    }
   }
 } catch (error) {
   console.error('Error updating course:', error);
+  if(error.response.status === 500) {
+    navigate('/error')
+  }
 }
 
 
