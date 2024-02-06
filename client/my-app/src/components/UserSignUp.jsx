@@ -60,14 +60,18 @@ function UserSignUp(props) {
         navigate('/courses');
       } else {
         console.error(`User registration failed. Status: ${response.status}`);
-        // Handle validation errors if the response status is not 201
+        if (response.status === 500) {
+          navigate('/error')
+        }
         if (response.data.errors) {
           setValidationErrors(response.data.errors); // Set the validation errors in state
         }
       }
     } catch (error) {
       console.error('Error during user registration:', error);
-      // Handle the error, display an error message, etc.
+      if(error.response.status===500){
+        navigate('/error')
+      }
     }
   };
 
