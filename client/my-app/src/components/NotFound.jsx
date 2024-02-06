@@ -10,6 +10,7 @@ function NotFound() {
     <div className="error">
       <h1>404 - Not Found</h1>
       <p>The requested page can't be found.</p>
+        <p>You should verify the URL.</p>
     </div>
           </div>
   );
