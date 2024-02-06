@@ -42,11 +42,15 @@ function UserSignIn(props) {
         navigate('/courses');
       } else {
         console.error(`Authentication failed. Status: ${response.status}`);
-        // Display an error message or handle the error as needed
+        if(response.status === 500){
+          navigate('/error')
+        }
       }
     } catch (error) {
       console.error('Error during authentication:', error);
-      // Handle the error, display an error message, etc.
+      if(error.response.status === 500) {
+        navigate('/error')
+      }
     }
   };
 
