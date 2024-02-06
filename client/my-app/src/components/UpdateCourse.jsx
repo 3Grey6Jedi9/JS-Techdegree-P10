@@ -49,6 +49,9 @@ function UpdateCourse({ courses }) {
       if (response.status === 200) {
         const data = response.data;
         setUpdatedCourse(data);
+      if (user.id !== data.userId) {
+        navigate('/forbidden')
+      }
       } else {
         console.error(`Network response was not ok. Status: ${response.status}`);
         if (response.status === 404){
@@ -86,6 +89,7 @@ function UpdateCourse({ courses }) {
   };
 
   const handleSubmit = async (e) => {
+
 
     const userPassword = window.prompt('Enter your password to update the course:');
   if (!userPassword) {
