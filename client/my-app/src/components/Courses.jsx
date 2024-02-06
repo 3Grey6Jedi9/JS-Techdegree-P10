@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../AuthContext.jsx"; // Importing the useAuth hook
 import '../styles/courses.css'
 
 function Courses() { // No need to receive courses as a prop
   const [courses, setCourses] = useState([]);
   const {signOut, user} = useAuth(); // Accessing the signOut function from the authentication context
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Function to fetch the list of courses from your API
@@ -16,6 +17,9 @@ function Courses() { // No need to receive courses as a prop
         setCourses(response.data); // Use response.data to set courses
       } catch (error) {
         console.error('Error fetching courses:', error);
+        if(error.response.status === 500) {
+          navigate('/error')
+        }
       }
     }
 
