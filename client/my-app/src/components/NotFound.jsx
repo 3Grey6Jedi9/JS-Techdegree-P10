@@ -1,11 +1,13 @@
 import React from 'react';
 import Dog from "../assets/notfound.jpeg";
+import '../styles/error.css'
+
 
 
 // NotFound component
 function NotFound() {
   return (
-      <div>
+      <div className="container">
       <img src={Dog} className="" alt="notfound" />
     <div className="error">
       <h1>404 - Not Found</h1>
