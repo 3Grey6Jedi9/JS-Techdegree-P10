@@ -81,9 +81,15 @@ function CourseDetail() {
     navigate('/courses');
   } else {
     console.error(`Network response was not ok. Status: ${response.status}`);
+    if (response.status === 500) {
+      navigate('/error')
+    }
   }
 } catch (error) {
   console.error('Error deleting course:', error);
+  if(error.response.status === 500) {
+    navigate('/error')
+  }
 }
   };
 
