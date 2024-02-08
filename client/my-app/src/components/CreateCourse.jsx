@@ -117,7 +117,7 @@ const handleVerification = () => {
       <form onSubmit={handleSubmit} className="create-form">
         <div className="smaller-input">
           <label htmlFor="title" className="create-label">Course Title</label>
-          <input
+          <input className="smaller-input"
             type="text"
             id="title"
             name="title"
@@ -129,7 +129,7 @@ const handleVerification = () => {
         </div>
         <div>
           <label htmlFor="estimatedTime" className="create-label">Estimated Time</label>
-          <input
+          <input className="smaller-input"
             type="text"
             id="estimatedTime"
             name="estimatedTime"

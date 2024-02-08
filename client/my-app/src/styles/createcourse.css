@@ -129,7 +129,7 @@ button[type="button"]:hover {
   color: cornflowerblue; /* Adjust the text color as needed */
   margin-bottom: 5px; /* Add margin below each label for spacing */
   font-weight: bold; /* Make labels bold if desired */
-  margin-right: 500px;
+  margin-right: 150px;
 }
 
 /* Style the inputs and textareas within the grid */
@@ -148,6 +148,7 @@ button[type="button"]:hover {
 /* Style the smaller input or textarea */
 .create-form .smaller-input {
   grid-column: span 1; /* Span one column */
+  width: 80%;
 }
 
 
@@ -155,8 +156,10 @@ button[type="button"]:hover {
 
 color: goldenrod;
   font-size: 18px;
-  margin-right: 500px;
+  margin-right: 400px;
 }
+
+
 
 
 
