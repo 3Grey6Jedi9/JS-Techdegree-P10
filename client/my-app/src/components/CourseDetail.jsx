@@ -119,12 +119,14 @@ function CourseDetail() {
     <h3>Title:</h3>
     <h3 className="sectiontitle">{course.title}</h3>
       </div>
-    <h3>Description</h3>
+    <h3>Course Description</h3>
     <ReactMarkdown className="section">{course.description}</ReactMarkdown>
   </div>
   <div className="right-column">
-    <h3>Materials</h3>
-    <ReactMarkdown className="section">{course.materialsNeeded}</ReactMarkdown>
+    <div className="materials-container">
+    <h3 className="materials-title">Materials</h3>
+    <ReactMarkdown className="materials-list">{course.materialsNeeded}</ReactMarkdown>
+      </div>
     <h3>Duration</h3>
     <ReactMarkdown className="section">{course.estimatedTime}</ReactMarkdown>
   </div>
