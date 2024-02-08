@@ -169,6 +169,7 @@ function UpdateCourse({ courses }) {
             onChange={handleInputChange}
             required
           />
+          <h2 className="author">By {user.firstName} {user.lastName}</h2>
         </div>
         <div className="right-column">
           <label htmlFor="estimatedTime" className="label-estimatedTime">Estimated Time</label>

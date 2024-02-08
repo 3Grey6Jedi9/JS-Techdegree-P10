@@ -51,7 +51,7 @@
     margin-bottom: 20px; /* Add some spacing between sections */
     text-align: left; /* Align text to the left */
     color: black;
-    font-family: "American Typewriter";
+    font-family: "Arial";
     margin-left: 20px;
 }
 
@@ -96,22 +96,4 @@
   font-size: 30px; /* Increase font size for the title */
   font-weight: bold; /* Make the title bold */
   text-align: left; /* Center-align the title */
-}
-
-.materials-list {
-  list-style: none; /* Remove default list styles */
-  padding: 0; /* Remove default padding */
-  margin-top: 10px; /* Add some top margin for spacing */
-    margin-left: 50px;
-}
-
-.materials-list-item {
-  font-size: 18px; /* Adjust font size for list items */
-  margin-bottom: 5px;
-}
-
-/* Optionally, you can add numbering to the list items */
-.materials-list-item::before {
-  content: counter(materials-counter) ". "; /* Add a counter with a period */
-  counter-increment: materials-counter; /* Increment the counter */
 }
