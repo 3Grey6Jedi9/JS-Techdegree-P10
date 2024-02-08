@@ -48,10 +48,27 @@
 
 /* Style for each individual section (e.g., title, description, materialsNeeded, estimatedTime) */
 .section {
-  margin-bottom: 20px; /* Add some spacing between sections */
-  text-align: left; /* Align text to the left */
-  color: black;
+    margin-bottom: 20px; /* Add some spacing between sections */
+    text-align: left; /* Align text to the left */
+    color: black;
+    font-family: "American Typewriter";
+    margin-left: 20px;
 }
+
+
+.sectiontitle {
+    margin-bottom: 20px; /* Add some spacing between sections */
+    text-align: left; /* Align text to the left */
+    color: black;
+    font-family: "American Typewriter";
+    margin-left: 20px;
+}
+
+.title-container {
+  display: flex;
+}
+
+
 
 .delete{
 

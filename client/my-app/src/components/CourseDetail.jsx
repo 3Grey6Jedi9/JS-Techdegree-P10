@@ -115,9 +115,11 @@ function CourseDetail() {
       {course ? (
         <div className="content-container">
   <div className="left-column">
-    <h3>Title</h3>
-    <h3 className="section">{course.title}</h3>
-    <h4>Description</h4>
+    <div className="title-container">
+    <h3>Title:</h3>
+    <h3 className="sectiontitle">{course.title}</h3>
+      </div>
+    <h3>Description</h3>
     <ReactMarkdown className="section">{course.description}</ReactMarkdown>
   </div>
   <div className="right-column">
