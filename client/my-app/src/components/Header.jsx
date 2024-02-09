@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Courses_Library from '../assets/Courses_Library.jpeg';
+import { Link } from 'react-router-dom'; // For navigation links
+import Courses_Library from '../assets/Courses_Library.jpeg'; // Importing main logo image
 
-function Header({ authenticatedUser, signOut }) {
+function Header({ authenticatedUser, signOut }) { // Defining the Header component
   return (
     <div className="header header--flex full-screen-header">
       <div className="bounds wrap">
@@ -38,4 +38,6 @@ function Header({ authenticatedUser, signOut }) {
   );
 }
 
+
+// Exporting the component for use in other parts of the app
 export default Header;

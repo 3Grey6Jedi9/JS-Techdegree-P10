@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-import Header from './components/Header'; // Import the Header component
+import Header from './components/Header'; // Importing the Header component
 import Courses from './components/Courses';
 import CreateCourse from './components/CreateCourse';
 import UpdateCourse from './components/UpdateCourse';
@@ -29,7 +29,7 @@ function AppRoutes() {
             <PrivateRoute />
           }
         >
-          {/* Use relative paths for nested routes */}
+          {/* Using relative paths for nested routes */}
           <Route path="" element={<Courses />} /> {/* Default route */}
           <Route path="create" element={<CreateCourse />} />
           <Route path=":id/update" element={<UpdateCourse courses={courses} />} />
@@ -47,7 +47,7 @@ function AppRoutes() {
         <Route path="/forbidden" element={<Forbidden />} />
         <Route path="/error" element={<UnhandledError />} />
 
-        {/* Catch-all route for undefined paths */}
+        {/* Catching-all route for undefined paths */}
         <Route path="*" element={<NotFound />} />
 
       </Routes>
@@ -58,3 +58,9 @@ function AppRoutes() {
 
 export default AppRoutes;
 
+
+
+/* This component, acts as the central navigation hub for your React application.
+It defines the routes that guide users to different sections of the app based on the URLs they visit.
+It incorporates authentication protection for specific routes using the PrivateRoute component
+It also handles various error scenarios by defining specific routes for them. */

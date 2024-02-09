@@ -1,20 +1,20 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie'; // Import js-cookie
 
-// Create an AuthContext
+// Creating an AuthContext
 const AuthContext = createContext();
 
-// Create a custom hook to access the AuthContext
+// Creating a custom hook to access the AuthContext
 export function useAuth() {
-  return useContext(AuthContext);
+  return useContext(AuthContext); // This will allow components to access the context values provided by the AuthProvider.
 }
 
-// Create an AuthProvider component
-export function AuthProvider({ children }) {
+// Creating an AuthProvider component
+export function AuthProvider({ children }) { // Wrapping other components with its context
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Check if user data is stored in cookies
+    // Checking if user data is stored in cookies
     const userData = Cookies.get('userData');
 
     if (userData) {
@@ -24,15 +24,15 @@ export function AuthProvider({ children }) {
   }, []);
 
   const signIn = (userData) => {
-    // Implement sign-in logic and set the user state
+    // Implementing sign-in logic and set the user state
     setUser(userData);
 
-    // Store user data in cookies when signed in
-    Cookies.set('userData', JSON.stringify(userData), { expires: 7 }); // Set an expiration date if needed
+    // Storing user data in cookies when signed in
+    Cookies.set('userData', JSON.stringify(userData), { expires: 7 }); // Setting an expiration date if needed
   };
 
   const signOut = () => {
-    // Implement sign-out logic and clear the user state
+    // Implementing sign-out logic and clear the user state
     setUser(null);
 
     // Remove user data from cookies when signed out
@@ -45,3 +45,6 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+
+// This file manages authentication state and functions within
