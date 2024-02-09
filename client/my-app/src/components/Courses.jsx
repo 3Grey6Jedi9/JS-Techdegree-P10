@@ -4,7 +4,9 @@ import {Link, useNavigate} from "react-router-dom";
 import {useAuth} from "../AuthContext.jsx"; // Importing the useAuth hook
 import '../styles/courses.css'
 
-function Courses() { // No need to receive courses as a prop
+
+//
+function Courses() {
   const [courses, setCourses] = useState([]);
   const {signOut, user} = useAuth(); // Accessing the signOut function from the authentication context
   const navigate = useNavigate()

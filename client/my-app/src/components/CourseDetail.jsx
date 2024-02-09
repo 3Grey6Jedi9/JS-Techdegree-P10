@@ -19,6 +19,9 @@ function CourseDetail() {
     const navigate = useNavigate();
 
 
+
+
+
     useEffect(() => {
     // Function to fetching the course details from your API
     async function fetchCourseDetail() {
@@ -131,10 +134,22 @@ function CourseDetail() {
   };
 
 
+
+
+
+
+
   // Handling the user SIGN OUT button action
   const handleSignOut = () => {
     signOut();
   };
+
+
+
+
+
+
+
 
   return (
       <div className="detail-container">
