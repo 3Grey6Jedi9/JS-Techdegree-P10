@@ -12,12 +12,13 @@ function CourseDetail() {
   const [course, setCourse] = useState(null);
   const { id } = useParams();
   const { user, signOut } = useAuth(); // Access the authenticated user and signOut function
-  const [isCourseOwner, setIsCourseOwner] = useState(false); // State to track if the user is the course owner
+  const [isCourseOwner, setIsCourseOwner] = useState(true); // State to track if the user is the course owner
+  const [OwnerData, setOwnerData] = useState(null);
 
     const navigate = useNavigate();
 
 
-  useEffect(() => {
+    useEffect(() => {
     // Function to fetch the course details from your API
     async function fetchCourseDetail() {
       try {
@@ -27,7 +28,28 @@ function CourseDetail() {
           setCourse(data);
           // Check if the authenticated user's ID matches the course owner's ID
           setIsCourseOwner(user && user.id === data.userId);
-        } else {
+          // If not the course owner, fetch user data associated with the course
+        if (!isCourseOwner) {
+        const userPassword = window.prompt('Enter your password to see a course created by other user:');
+  if (!userPassword) {
+    // User canceled the prompt
+    return;
+  }
+   const authString = `${user.emailAddress}:${userPassword}`;
+   const base64AuthString = btoa(authString);
+   const authHeaderValue = `Basic ${base64AuthString}`;
+          const userResponse = await axios.get(`http://localhost:5001/api/courses/${data.userId}`, {
+        headers: {
+          Authorization: authHeaderValue,
+        },
+      });
+          if (userResponse.status === 200) {
+            const userData = userResponse.data;
+            setOwnerData(userData);
+          }
+        }
+      } else {
+
           console.error(`Network response was not ok. Status: ${response.status}`);
           if (response.status === 404){
             navigate('/notfound')
@@ -54,7 +76,20 @@ function CourseDetail() {
     }
 
     fetchCourseDetail();
-  }, [id, user]); // Fetch details when the 'id' parameter changes or when the user changes
+  }, [id, user, isCourseOwner]); // Fetch details when the 'id' parameter changes or when the user changes
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const handleDeleteCourse = async () => {
 
@@ -119,7 +154,12 @@ function CourseDetail() {
     <h3>Title:</h3>
     <h3 className="sectiontitle">{course.title}</h3>
       </div>
-    <h2 className="author">By {user.firstName} {user.lastName}</h2>
+ {isCourseOwner ? (
+  <h2 className="author">By {user.firstName} {user.lastName}</h2>
+) : (
+  <h2 className="author">By {OwnerData && OwnerData.User.firstName} {OwnerData && OwnerData.User.lastName}</h2>
+)}
+
     <h3>Course Description</h3>
     <ReactMarkdown className="section">{course.description}</ReactMarkdown>
   </div>
