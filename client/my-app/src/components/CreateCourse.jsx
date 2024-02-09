@@ -5,14 +5,24 @@ import {useAuth} from "../AuthContext.jsx";
 import '../styles/createcourse.css'
 
 
+
+
+// Component to creating a new course
 function CreateCourse() {
+  // Tracking input values for course details
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
+  // Storing any validation errors received from the API
   const [validationErrors, setValidationErrors] = useState([]);
+  // Access user information and signOut function from AuthContext
   const { signOut, user } = useAuth();
 
+
+
+
+  // Handle changes in input fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'title') {
@@ -28,22 +38,31 @@ function CreateCourse() {
 
 
 
+
+
+// Function that validates form data before submission
 const handleVerification = () => {
-    // Check if title and description are not null
+    // Checking if title and description are not null
     if (title !== '' && description !== '') {
       // If both fields are not null, trigger handleSubmit
       handleSubmit();
     } else {
-      // If either field is null, display validation error
+      // Displaying validation error if fields are missing
       setValidationErrors(['Please provide values for both "title" and "description"']);
     }
   };
 
 
 
-
+  // Hook for handling navigation
   const navigate = useNavigate();
 
+
+
+
+
+
+  // Submitting form data for creating a new course
   const handleSubmit = async (e) => {
 
     // Use window.prompt() to ask for the password
@@ -52,21 +71,23 @@ const handleVerification = () => {
     // User canceled the prompt
     return;
   }
+  // Creating basic authentication header with username and password
   const authString = `${user.emailAddress}:${userPassword}`;
   const base64AuthString = btoa(authString);
   const authHeaderValue = `Basic ${base64AuthString}`;
 
     try {
+      // Making an API request for creating the course
       const response = await axios.post('http://localhost:5001/api/courses', {
         title,
         description,
         estimatedTime,
         materialsNeeded,
-        userId: user.id, // Add userId to the request payload
+        userId: user.id, // Adding userId to the request payload
       },{
     headers: {
       Authorization: authHeaderValue,
-      'Content-Type': 'application/json', // Set the content type
+      'Content-Type': 'application/json', // Setting the content type
     },
   });
 
@@ -87,16 +108,32 @@ const handleVerification = () => {
     }
   };
 
+
+
+
+
+  // Handling the CANCEL button action
   const handleCancel = () => {
     // Redirect the user to the default route (list of courses)
     navigate('/courses');
   };
 
+
+
+
+
+  // Handling the SIGN OUT button action
   const handleSignOut = () => {
 
    signOut();
 
   };
+
+
+
+
+
+
 
   return (
     <div className="create-course-container">
@@ -167,6 +204,7 @@ const handleVerification = () => {
     </div>
   );
 }
+
 
 
 export default CreateCourse;
