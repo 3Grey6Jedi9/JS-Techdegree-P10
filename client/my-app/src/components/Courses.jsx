@@ -5,18 +5,25 @@ import {useAuth} from "../AuthContext.jsx"; // Importing the useAuth hook
 import '../styles/courses.css'
 
 
-//
+// Component to displaying a list of courses and a "Create New Course" button
 function Courses() {
+  //State to storing the list of courses
   const [courses, setCourses] = useState([]);
   const {signOut, user} = useAuth(); // Accessing the signOut function from the authentication context
-  const navigate = useNavigate()
+  const navigate = useNavigate() // Hook to handling navigation
 
+
+
+
+
+  // Fetching courses on component mount
   useEffect(() => {
     // Function to fetch the list of courses from your API
     async function fetchCourses() {
       try {
+        // Making an API request to retrieve all courses
         const response = await axios.get('http://localhost:5001/api/courses');
-        setCourses(response.data); // Use response.data to set courses
+        setCourses(response.data); // Updating the state with the fetch courses
       } catch (error) {
         console.error('Error fetching courses:', error);
         if(error.response.status === 500) {
@@ -28,12 +35,26 @@ function Courses() {
     fetchCourses();
   }, []);
 
+
+
+
+
+
+
+
   const handleSignOut = () => {
 
       signOut(); // Calling the signOut function to sign out the user
 
 
   }
+
+
+
+
+
+
+
 
   return (
     <div className="courses-container">
@@ -58,5 +79,8 @@ function Courses() {
     </div>
   );
 }
+
+
+
 
 export default Courses;
