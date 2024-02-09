@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
-import { useAuth } from '../AuthContext.jsx';
+import { useAuth } from '../AuthContext.jsx'; // Access authentication context
 import ReactMarkdown from 'react-markdown';
-import '../styles/courses.css'
-import '../styles/coursedetail.css'
+import '../styles/courses.css' // Include relevant styles
+import '../styles/coursedetail.css' // Include specific styles
 
 
-
+// Defining the CourseDetail component
 function CourseDetail() {
+    // Track course data, course ID, and authentication state
   const [course, setCourse] = useState(null);
   const { id } = useParams();
-  const { user, signOut } = useAuth(); // Access the authenticated user and signOut function
+  const { user, signOut } = useAuth(); // Accessing the authenticated user and signOut function
   const [isCourseOwner, setIsCourseOwner] = useState(true); // State to track if the user is the course owner
-  const [OwnerData, setOwnerData] = useState(null);
+  const [OwnerData, setOwnerData] = useState(null); // State to see who is the course owner
 
     const navigate = useNavigate();
 
 
     useEffect(() => {
-    // Function to fetch the course details from your API
+    // Function to fetching the course details from your API
     async function fetchCourseDetail() {
       try {
         const response = await axios.get(`http://localhost:5001/api/courses/${id}`);
         if (response.status === 200) {
           const data = response.data;
           setCourse(data);
-          // Check if the authenticated user's ID matches the course owner's ID
+          // Checking if the authenticated user's ID matches the course owner's ID
           setIsCourseOwner(user && user.id === data.userId);
-          // If not the course owner, fetch user data associated with the course
+          // If not the course owner, fetching user data associated with the course
         if (!isCourseOwner) {
+            //Asking for password before executing the request (since we didn't store the plain password)
         const userPassword = window.prompt('Enter your password to see a course created by other user:');
   if (!userPassword) {
     // User canceled the prompt
@@ -76,7 +78,7 @@ function CourseDetail() {
     }
 
     fetchCourseDetail();
-  }, [id, user, isCourseOwner]); // Fetch details when the 'id' parameter changes or when the user changes
+  }, [id, user, isCourseOwner]); // Fetching details when the 'id' parameter changes or when the user changes or the course owner
 
 
 
@@ -90,10 +92,10 @@ function CourseDetail() {
 
 
 
-
+// This function will define the DELETE button action
   const handleDeleteCourse = async () => {
 
-      // Use window.prompt() to ask for the password
+      // Using window.prompt() to ask for the password
   const userPassword = window.prompt('Enter your password to delete the course:');
   if (!userPassword) {
     // User canceled the prompt
@@ -128,6 +130,8 @@ function CourseDetail() {
 }
   };
 
+
+  // Handling the user SIGN OUT button action
   const handleSignOut = () => {
     signOut();
   };
