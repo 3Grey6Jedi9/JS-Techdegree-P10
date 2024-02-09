@@ -1,11 +1,10 @@
 import React from 'react';
-import AngryQueen from '../assets/forbidden.jpeg'
-import '../styles/error.css'
+import AngryQueen from '../assets/forbidden.jpeg' // Importing the forbidden image
+import '../styles/error.css' // Importing the error styles
 
 
 
-
-// Forbidden component
+// Function component to display a "403 Forbidden" error message
 function Forbidden() {
   return (
         <div className="forbcontainer">
