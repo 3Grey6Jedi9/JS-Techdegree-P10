@@ -1,10 +1,10 @@
 import React from 'react';
-import Dog from "../assets/notfound.jpeg";
-import '../styles/error.css'
+import Dog from "../assets/notfound.jpeg"; // Importing the "not found" image
+import '../styles/error.css' // Importing the error styles
 
 
 
-// NotFound component
+// Function component for displaying a "404 Not Found" error message
 function NotFound() {
   return (
       <div className="container">
