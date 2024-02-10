@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../AuthContext.jsx';
-import '../styles/signup.css'
-import AliceDoor from "../assets/signin.png";
+import axios from 'axios'; // Importing Axios for making API requests
+import { useNavigate } from 'react-router-dom'; // For navigation
+import { useAuth } from '../AuthContext.jsx'; // Accessing authentication context
+import '../styles/signup.css' // Importing custom styles
 import Rabbit from "../assets/signup.jpeg";
 
+
+// Function component for user sign-up
 function UserSignUp(props) {
+  // State variables for user input and validation errors
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -14,11 +16,13 @@ function UserSignUp(props) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [validationErrors, setValidationErrors] = useState([]); // State to store validation errors
 
+  // Access navigation hook and signIn function from context
   const navigate = useNavigate();
   const { signIn } = useAuth();
 
+  // Handling input changes for form fields
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // Updating respective state based on input name
     if (name === 'firstName') {
       setFirstName(value);
     } else if (name === 'lastName') {
@@ -32,16 +36,23 @@ function UserSignUp(props) {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
+
+
+
+
+  // Handling form submission (sign-up)
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Preventing default form submission
+
+    // Checking password match
     if (password !== confirmPassword) {
       alert('Password and confirm password do not match.');
       return;
     }
 
     try {
-      // Make a POST request to create a new user
+      // Making a POST request to create a new user
       const response = await axios.post('http://localhost:5001/api/users', {
         firstName,
         lastName,
@@ -64,7 +75,7 @@ function UserSignUp(props) {
           navigate('/error')
         }
         if (response.data.errors) {
-          setValidationErrors(response.data.errors); // Set the validation errors in state
+          setValidationErrors(response.data.errors); // Setting the validation errors in state
         }
       }
     } catch (error) {
@@ -75,16 +86,27 @@ function UserSignUp(props) {
     }
   };
 
+
+
+
+
+
   const handleCancel = () => {
-    // Redirect the user to the default route (Header)
+    // Redirecting the user to the default route (Header)
     navigate('/');
   };
+
+
+
+
+
+
 
   return (
     <div className="user-signup-container">
       <img src={Rabbit} className="user-signup-logo" alt="signup" />
       <h2>Sign Up</h2>
-      {validationErrors.length > 0 && ( // Display validation errors if there are any
+      {validationErrors.length > 0 && ( // Displaying validation errors if there are any
         <div className="validation--errors">
           <h3>Validation Errors</h3>
           <ul>
