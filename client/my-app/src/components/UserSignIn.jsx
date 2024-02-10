@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import Axios
+import axios from 'axios'; // Importing Axios for making API request
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../AuthContext.jsx';
-import Courses_Library from "../assets/Courses_Library.jpeg";
+import { useAuth } from '../AuthContext.jsx'; // Accessing authentication context
 import AliceDoor from '../assets/signin.png'
-import '../styles/signin.css'
+import '../styles/signin.css' // Importing custom styles
 
 
-
+// Function component for user sign-in
 function UserSignIn(props) {
+  // State variables for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const { signIn } = useAuth(); // Accessing signIn function from context
   const navigate = useNavigate();
 
+  // Handling input changes for email and password field
   const handleInputChange = (e) => {
+    // Updating respective state based on input name
     const { name, value } = e.target;
     if (name === 'email') {
       setEmail(value);
@@ -23,13 +26,20 @@ function UserSignIn(props) {
     }
   };
 
+
+
+
+
+  // Handling form submission (sign-in)
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
 
     try {
-      // Make an API request to authenticate the user
+      // Making an API request to authenticate the user
+      //Creating authentication header for API request
       const authString = `${email}:${password}`;
-      const base64AuthString = btoa(authString); // Encode credentials to Base64
+      const base64AuthString = btoa(authString); // Encoding credentials to Base64
+      // Sending API request to authenticate user
       const response = await axios.get('http://localhost:5001/api/users', {
         headers: {
           Authorization: `Basic ${base64AuthString}`,
@@ -37,7 +47,6 @@ function UserSignIn(props) {
       });
 
       if (response.status === 200) {
-        // Successful authentication, you can redirect to a protected route
         signIn(response.data);
         navigate('/courses');
       } else {
@@ -54,10 +63,22 @@ function UserSignIn(props) {
     }
   };
 
+
+
+
+
+
+
   const handleCancel = () => {
-    // Redirect the user to the default route (Header)
+    // Redirecting the user to the default route (Header)
     navigate('/');
   };
+
+
+
+
+
+
 
   return (
     <div className="user-signin-container">
