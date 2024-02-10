@@ -1,23 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
-import Courses from './Courses'; // Import the Courses component
-import {useAuth} from "../AuthContext.jsx";
-import '../styles/update.css'
-import '../styles/courses.css'
+import { useNavigate, useParams } from 'react-router-dom'; // For navigation and routing
+import axios from 'axios'; // For making API requests
+import {useAuth} from "../AuthContext.jsx"; // Hook for authentication context
+import '../styles/update.css' // Importing custom styles
+import '../styles/courses.css' // Importing custom styles
 
 
+
+// Function component for handling updating an existing course
 function UpdateCourse({ courses }) {
+  // Navigation hooks and routing parameters
   const navigate = useNavigate();
   const { id } = useParams();
+  // Authentication context
   const {signOut, user} = useAuth();
+  // State for storing validation errors
   const [validationErrors, setValidationErrors] = useState([]);
 
 
- const handleVerification = () => {
-  // Check if there are validation errors
 
-    // Check if title and description are not null
+ const handleVerification = () => {
+  // Checking if there are validation errors
+
+    // Checking if title and description are not null
     if (updatedCourse.title !== '' && updatedCourse.description.trim() !== '') {
       // If both fields are not null, trigger handleSubmit
       handleSubmit();
@@ -31,7 +36,7 @@ function UpdateCourse({ courses }) {
 
 
 
-  // Initialize the state with values from the selected course
+  // Initializing the state with values from the selected course
   const [updatedCourse, setUpdatedCourse] = useState({
     title: '',
     description: '',
@@ -39,20 +44,30 @@ function UpdateCourse({ courses }) {
     materialsNeeded: '',
   });
 
+
+
+
+  //Fetching course details on component mount
   useEffect(() => {
     fetchCourseDetail();
   }, [id]);
 
+
+
+
+  // Function for fetching course details from the API
   const fetchCourseDetail = async () => {
     try {
       const response = await axios.get(`http://localhost:5001/api/courses/${id}`);
       if (response.status === 200) {
         const data = response.data;
         setUpdatedCourse(data);
+        // Cheking authorization
       if (user.id !== data.userId) {
-        navigate('/forbidden')
+        navigate('/forbidden'); // Unauthorized access
       }
       } else {
+        // Handling different error scenarios based on status codes
         console.error(`Network response was not ok. Status: ${response.status}`);
         if (response.status === 404){
             navigate('/notfound')
@@ -80,6 +95,10 @@ function UpdateCourse({ courses }) {
 
 
 
+
+
+
+  // Handling input changes for course details
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUpdatedCourse({
@@ -88,6 +107,7 @@ function UpdateCourse({ courses }) {
     });
   };
 
+  // Handling form submission (updating course)
   const handleSubmit = async (e) => {
 
 
@@ -99,7 +119,6 @@ function UpdateCourse({ courses }) {
    const authString = `${user.emailAddress}:${userPassword}`;
    const base64AuthString = btoa(authString);
    const authHeaderValue = `Basic ${base64AuthString}`;
-
 
 
     try {
@@ -131,15 +150,28 @@ function UpdateCourse({ courses }) {
 
   };
 
+
+
+
+
   const handleCancel = () => {
     // Redirect the user to the course detail page
     navigate(`/courses/${id}`);
   };
 
+
+
+
   const handleSignOut = () => {
     signOut(); // Calling the signOut function.
 
   }
+
+
+
+
+
+
 
   return (
     <div className="courses-container">
